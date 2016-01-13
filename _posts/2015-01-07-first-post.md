@@ -30,4 +30,7 @@ Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the g
 }
 {% endhighlight %}
 
+![](/img/Rplot.png)
+
+We can see the histogram _here_. 
 
