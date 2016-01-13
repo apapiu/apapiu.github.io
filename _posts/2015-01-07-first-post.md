@@ -31,4 +31,3 @@ Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the g
 {% endhighlight %}
 
 
-![Image](/img/me.jpg)
