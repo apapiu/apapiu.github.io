@@ -1,9 +1,6 @@
 ---
 layout: post
 title: "Strategies for the Board Game Risk!"
-published: true
-subtitle: null
-date: ""
 ---
 
 
