@@ -1,6 +1,6 @@
 ---
 layout: post
-title: First post!
+title: Strategies for the Board Game Risk!
 ---
 
 Some Code:
