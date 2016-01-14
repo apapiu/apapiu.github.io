@@ -6,8 +6,9 @@ title: "Strategies for the Board Game Risk!"
 
 The game of Risk is a turn-based startegy game where players battle each other to take over the wolrd. Your aim is to control as many of the forty-two territories with the armies at your disposal. The way you gain ground is by attacking enemy territories via rolling dice. Here is a basic rundown of the battle mechanics:  Battles occur in rounds, with an attacking player typically rolling (up to) 3 dice, and a defending player (up to) 2 dice. After rolling, dice are paired up (Highest rolled attacker die versus highest rolled defender die, then next highest rolled pair if required). The highest rolled number wins (eliminating one opponent army), with ties resulting in a win by the defender.
 
-Attacks by more than three armies are played in a series of rounds. After each round, armies from the losing team are removed from the board and the remaining pieces continue to duel. 
+Attacks by more than three armies are played in a series of rounds. After each round, armies from the losing team are removed from the board and the remaining pieces continue to duel. The rules change a bit if the attacker are left with three armies of less, she can only roll fewer dice, 
 
+The first step in getting insight is figuring out who has the probabilistic advantage: on one hand the defender rolls only rolls 2 dice - one less than the defender, on the other hand the attacker loses armies in the case of equality. It turns out the computation is not so easy. My first instinct as a combinatorialist is to simply count or list all the possibilities. Doing this by hand however is quite tricky - it's very easy to overcount cases.
 
 
 
