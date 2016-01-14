@@ -34,6 +34,11 @@ We could do the markov chain aprroach again but let's try something else instead
 [1] 0 3
 {% endhighlight %}
 
+To get a better sense of the variance we'll basically write some code to repeat the `Rolls(14, 12)` function a whole bunch of times (100000 times to be precise) and then look at the distribution of how many armies the attacker is left with.  
+![](/img/riskplot1.jpg)
+
+![](/img/Rplot.png)
+
 
 
 {% highlight r %}
@@ -61,8 +66,4 @@ Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the g
 
 
 
-
-![](/img/Rplot.png)
-
-We can see the histogram _here_. 
 
