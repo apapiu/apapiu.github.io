@@ -4,7 +4,15 @@ title: "Strategies for the Board Game Risk!"
 ---
 
 
-The game of Risk is a turn-based startegy game where players battle each other to take over the wolrd. Your aim is to control as many of the forty-two territories with the armies at your disposal. The way you gain ground is by attacking enemy territories via rolling dice. Here is a basic rundown of the battle mechanics: 
+The game of Risk is a turn-based startegy game where players battle each other to take over the wolrd. Your aim is to control as many of the forty-two territories with the armies at your disposal. The way you gain ground is by attacking enemy territories via rolling dice. Here is a basic rundown of the battle mechanics:  Battles occur in rounds, with an attacking player typically rolling (up to) 3 dice, and a defending player (up to) 2 dice. After rolling, dice are paired up (Highest rolled attacker die versus highest rolled defender die, then next highest rolled pair if required). The highest rolled number wins (eliminating one opponent army), with ties resulting in a win by the defender.
+
+Attacks by more than three armies are played in a series of rounds. After each round, armies from the losing team are removed from the board and the remaining pieces continue to duel. 
+
+
+
+
+
+Here we will pursue a different strategy, not necessarily the most precise but certainly the most natural: just play the game over and over again and see what happens. Luckily computers can generate (pseudo)-random rolls of dice so we don't have to do this ourselves. Here's a function `Rolls` that simulates 
 
 {% highlight r %}
 Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the guys you are actually attacking with
