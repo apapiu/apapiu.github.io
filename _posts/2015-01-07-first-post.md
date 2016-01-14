@@ -4,8 +4,7 @@ title: "Strategies for the Board Game Risk!"
 ---
 
 
-Here are some strategies for the game risk
-
+The game of Risk is a turn-based startegy game where players battle each other to take over the wolrd. Your aim is to control as many of the forty-two territories with the armies at your disposal. The way you gain ground is by attacking enemy territories via rolling dice. Here is a basic rundown of the battle mechanics: 
 
 {% highlight r %}
 Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the guys you are actually attacking with
