@@ -3,9 +3,9 @@ layout: post
 title: First post!
 ---
 
-4.4 Notation: All the summations in this exercise denoted by $\sum_q$ will be from $q = 0$ to $Q$. 
+4.4 Notation: All the summations in this exercise denoted by $$\sum_q$$ will be from $$q = 0$$ to $$Q$$. 
 
-a) $\sigma$ will be the standard deviation of the noise $\sigma \epsilon_n$. We need to normalize $f$ since otherwise $f(x_n)$ could have different values and then $\sigma$ would have a different impact for each $y_n$. So basically normalizing distributes the noise evenly among our data points. Let's see what we need to normalize by. Let $f(x) = \sum_q a_q L_q(x)$, where $L_q$ is the $q$-th Legendre polynomial. Now $$E_x[f^2] = E_x[(\sum_q a_q L_q(x)^2] = .5\int_{-1}^{1}(\sum_q a_q L_q(x))^2 dx =\sum_q \frac{a_q^2}{2q+1}$$ where the last equality follows from 4.3 e) after we do the squaring. 
+a) $$\sigma$$ will be the standard deviation of the noise $$\sigma \epsilon_n$$.  We need to normalize $f$ since otherwise $f(x_n)$ could have different values and then $\sigma$ would have a different impact for each $y_n$. So basically normalizing distributes the noise evenly among our data points. Let's see what we need to normalize by. Let $f(x) = \sum_q a_q L_q(x)$, where $L_q$ is the $q$-th Legendre polynomial. Now $$E_x[f^2] = E_x[(\sum_q a_q L_q(x)^2] = .5\int_{-1}^{1}(\sum_q a_q L_q(x))^2 dx =\sum_q \frac{a_q^2}{2q+1}$$ where the last equality follows from 4.3 e) after we do the squaring. 
 So $$E_{a,x}[f^2] = E_a[\sum_q \frac{a_q^2}{2q+1}]=\sum_q \frac{1}{2q+1}$$ since $E_a[a_q^2] = 1$. So in order to normalize $f$ we need to divide by $(\sum_q \frac{1}{2q+1})^{1/2}$.
 
 b) Given $N$ data points of the form $(x_n, y_n)$ we create a matrix $X$ where the $i$-th row in $X$ is $(L_0(x_i), L_1(x_i),...,L_Q(x_i))$ and we let $y = (y_1,...,y_n)$ Then $g_Q(x) = \sum_q w_q L_q(x)$ where $w_q$ is the $q$-th entry in $w = ((X^TX)^{-1}X^T)y$. Basically we are doing linear regression in the $z$-space where the basis is made up of the Legendre polynomials of degree less than or equal to $Q$. Take $Q = 2$ or $Q = 10$ to obtain $g_2$ and $g_{10}$ respectively. We actually implement this in part d).
