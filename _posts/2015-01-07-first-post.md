@@ -21,7 +21,7 @@ Many times in the game you'll be in the following situation: you have, say 28 ar
 - how _certain_ are you about the expected value the number of armies you have remaining? In other words how big of a role does luck play in the game? In other words what's the variance of the random variable number of armies remaining.
 - what order should you attack the territories in? 
 
-We could do the markov chain aprroach again but let's try something else instead. Our approach, while not necessarily the most precise but is certainly the most natural: just roll the corresponding dice over and over again and see what the outcomes are. Luckily computers can generate ([pseudo](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)) random rolls of dice so we don't have to do this ourselves. Here's a function `Rolls` written in R that simulates a battle netween a number of attacking armies `atarm` here versus a number of defending armies called `defarm` and stops when either one player or the other runs out of pieces for the spefici territory. For example `Rolls(20, 7)`
+We could do the markov chain aprroach again but let's try something else instead. Our approach, while not necessarily the most precise but is certainly the most natural: just roll the corresponding dice over and over again and see what the outcomes are. Luckily computers can generate ([pseudo](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)) random rolls of dice so we don't have to do this ourselves. Here's a function `Rolls` written in R that simulates a battle netween a number of attacking armies `atarm` here versus a number of defending armies called `defarm` and stops when either one player or the other runs out of pieces for the specific territory. Below I run the 14 versus 12 armies battle a few times. The first `[1] 1 0` means the attacker is left with one army after and the defender with 0. As you can see even from these random examples, there is a lot of variability. To get a better sense of the variance we'll basically write some code to repeat the `Rolls(14, 12)` function a whole bunch of times (100000 times to be precise) and then look at the distribution of how many armies the attacker is left with.  
 
 {% highlight r %}
 > Rolls(14, 12)
@@ -32,17 +32,8 @@ We could do the markov chain aprroach again but let's try something else instead
 [1] 8 0
 > Rolls(14, 12)
 [1] 0 3
-> Rolls(14, 12)
-[1] 0 8
-> Rolls(14, 12)
-[1] 0 2
-> Rolls(14, 12)
-[1] 0 4
-> Rolls(14, 12)
-[1] 2 0
-> Rolls(14, 12)
-[1] 8 0
 {% endhighlight %}
+
 
 
 {% highlight r %}
@@ -67,6 +58,9 @@ Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the g
     return(c(atarm, defarm))
 }
 {% endhighlight %}
+
+
+
 
 ![](/img/Rplot.png)
 
