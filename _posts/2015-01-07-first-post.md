@@ -5,6 +5,9 @@ title: "Strategies for the Board Game Risk!"
 
 <span> $$x^2$$ <span>
 
+$$\begin{aligned}
+\mathrm{d}n_1 = r n_1 \left(1 -  \frac{n_1 + C(x_1, x_2) n_2}{K(x_1) } \right) \mathrm{d}t + \frac{1}{\sqrt{K_o} } \sqrt{r n_1 \left(1 +  \frac{n_1 + C(x_1, x_2) n_2}{K(x_1) } \right) } \mathrm{d}W_1\end{aligned}$$
+
 
 The game of Risk is a turn-based startegy game where players battle each other to take over the wolrd. Your aim is to control as many of the forty-two territories with the armies at your disposal. The way you gain ground is by attacking enemy territories via rolling dice. Here is a basic rundown of the battle mechanics:  Battles occur in rounds, with an attacking player typically rolling (up to) 3 dice, and a defending player (up to) 2 dice. After rolling, dice are paired up (Highest rolled attacker die versus highest rolled defender die, then next highest rolled pair if required).
 The highest rolled number wins (eliminating one opponent army), with ties resulting in a win by the defender. There a quite a few other rules; you can find them explained [here]().
