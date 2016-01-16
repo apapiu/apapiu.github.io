@@ -1,14 +1,7 @@
 ---
 layout: post
-subtitle: null
-date: ""
-published: false
-title: Polynomial Overfitting
+title: "Polynomial Overfittting"
 ---
-
-## A New Post
-
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
 
 Let $$Q$$ be the degree of our target polynomial $$f$$, $$N$$ - the number of noisy examples generated and $$\sigma$$ the standard deviation of the noise. We will now fit a second degree polynomial $$g_2$$ and a tenth degree polynomial $$g_{10}$$ to the data we generated while varying $$Q$$, $$N$$, and $$\sigma$$ and see what insights we can get into overfitting. For a fixed triple $$(Q, N, \sigma)$$ the overfit measure will  be $$E_{out}(H_{10}) - E_{out}(H_2)$$ - the difference in out of sample error in fitting the data with a tenth and a second degree polynomial averaged over $$500$$ runs - the averaging is necessary since, as we shall see, the variance of $$E_{out}(g_2)$$ and $$E_{out}(g_{10})$$ can be high.         
 
