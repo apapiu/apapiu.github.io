@@ -7,6 +7,8 @@ Let $$Q$$ be the degree of our target polynomial $$f$$, $$N$$ - the number of no
 
 To begin let's choose $$Q = 10, N = 80, \sigma^2 = .1$$. The results of out fit can be seen in **Figure 1**. We see that $$g_{10}$$ performs better than $$g_2$$ -- we get $$E_{out}(g_2) = 0.0970$$ and $$E_{out}(g_{10}) = 0.0221$$. For the second degree polyomial fit the main contributor to $$E_{out}$$ is the bias - the model cannot capture the complexity of the target function - it does however do a good job of not fitting the noise. The opposite is true for $$g_{10}$$. In this case the model does have enough complexity to fit the data but since noise is present it fits some of the noise in as well - thus the variance of the model increases.
 
+![](/img/poly1.png)
+
 {% highlight r %}
 library(polynom)
 set.seed(127)
