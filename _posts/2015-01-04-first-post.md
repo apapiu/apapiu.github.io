@@ -30,5 +30,10 @@ mean(apply(normals, 1, mean))
 mean(apply(normals, 1, min))
 {% endhighlight %}
 
+![](/img/cverror1.png)
+
+![](/img/cverror2.png)
 
 As we can see always taking the minimum MSE does not correctly estimate the true MSE of 3. In fact it siginificatly underestimates it roughly by one standard deviation and a half (??is there a way to get this in general??). Therefore it is important to set a validation set aside and only run the model on it once in order to get an unbiased estimate of the real test error. 
+
+
