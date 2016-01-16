@@ -29,6 +29,7 @@ Our approach, while not necessarily the most precise but is certainly the most n
 To get a better sense of the distribution we'll basically write some code to repeat the `Rolls(14, 12)` function a whole bunch of times (100000 times to be precise) and then look at the distribution of how many armies the attacker is left with.  
 ![](/img/riskplot1.jpg)
 
+There are a few obersvations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeway howeber is just how spread out the distrubution is. You can expect on average to be left with  `[1] 4.45071` armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
 
 
 {% highlight r %}
