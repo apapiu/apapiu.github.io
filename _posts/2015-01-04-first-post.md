@@ -1,6 +1,6 @@
 ---
 layout: post
-title: First post!
+title: Cross Validation Error Pitfalls
 ---
 
 Let's say you have 10 models that you want to test and roughly all models have the same cross validation error distribution: the CVMSE is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normaility assumption will always hold roughly speaking.   
@@ -18,22 +18,28 @@ While $$\overline X$$ is an unbiased estimate, $$minX$$ is not, meaning the expe
 Here's some code and the histograms. 
 
 {% highlight r %}
+library(ggplot2)
+
 set.seed(132)
-normals <- t(replicate(1000, rnorm(10, mean = 3, sd = .2)))
+normals <- t(replicate(10000, rnorm(10, mean = 3, sd = .2)))
 
-hist(apply(normals, 1, mean), xlab = "Error")
+qplot(apply(normals, 1, mean), binwidth = .005, xlim = c(2.5, 3.5), 
+      xlab = "error ")
 
-hist(apply(normals, 1, min), xlab = "Error")
+qplot(apply(normals, 1, min), binwidth = .005, xlim = c(2.5, 3.5),
+      xlab = "error")
 
 mean(apply(normals, 1, mean))
 
 mean(apply(normals, 1, min))
 {% endhighlight %}
 
-![](/img/cverror1.png)
+This is the distribution for the average and it is unbiased habing the same expected value as the original distribution. The average error in this case is `[1] 2.999636`, almost identical to the real value of 3.
+![](/img/CVerror1.png)
 
+This is the left-skewed distrubtion we get by taking the minimum of the Mean Squared Error. In this case the average is `[1] 2.692245` one underestimate by one standard deviation and a half.
 ![](/img/cverror2.png)
 
-As we can see always taking the minimum MSE does not correctly estimate the true MSE of 3. In fact it siginificatly underestimates it roughly by one standard deviation and a half (??is there a way to get this in general??). Therefore it is important to set a validation set aside and only run the model on it once in order to get an unbiased estimate of the real test error. 
+There are two ways to get an unbiased estimate in this case that come to mind. One is once you choose your model using cross-validation, you will do another cross-validation (or a whole epoch, say) only with the model you have - this way you get a distibution of the cross-validatoin error for the model you picked. Or the other, more basic option is to simply set aside a test set that is never looked at or touched in any way and then see what error you get on that set.
 
 
