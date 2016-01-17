@@ -163,4 +163,4 @@ overfit <- c(0.30510142, 0.26382851,  0.69782394, 0.04901888,  0.08816353, -0.06
 plot(Q, overfit, ylab = "Mean of Overfit Measure")
 abline(h = 0)
 
-{%endhighlight%}
+{% endhighlight %}
