@@ -45,6 +45,8 @@ points(x, y, col = "blue")
 
 One would thus expect $$g_{10}$$ to perform more poorly as amount of noise increases and the number of examples decreases and this will in fact be the case. Let's do an examples with $$Q = 5, N = 40, \sigma^2 = 1$$. This is seen in **Figure 2**. In this case we get $$E_{out}(g_2) = .061$$ and $$E_{out}(g_{10} = 1.12$$. $$g_2$$ is the clear winner here - it still showcases some bias but it deals with the noise much better. $$g_{10}$$ fits too much of the noise leading to an increase in the variance and thus an increase in $$E_{out}$$.
 
+![](/img/poly2.png)
+
 {% highlight r %}
 
 q= 5 #degree of poly
