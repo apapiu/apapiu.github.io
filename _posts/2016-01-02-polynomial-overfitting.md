@@ -122,30 +122,13 @@ In **Figure 4** we vary the magnitude of the noise and keep everything else Equa
 
 ![](/img/poly4.png)
 
-{% highlight r %}
-noise = c(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2)
 
-overfit = c(-0.160562918, -0.058358514, -0.004537344,  0.173664946,  0.53917195,  1.760951385,  0.742196099,  0.841950389,  0.774870422)
-
-plot(noise, overfit, ylab = "Mean of Overfit Measure")
-abline(h = 0)
-{%endhighlight%}
 
 **Figure 5** shows the results of  varying the number of examples with $$\sigma^2 = 0.5$$ and $$Q = 10$$. As expected, the more examples we have the more stable the more complex $$g_{10}$$ model is. In fact if we have more than roughly $$100$$ examples, $$g_{10}$$ outperforms $$g_2$$.
 
 ![](/img/poly5.png)
 
 An increase number of examples leads to a decrease in  the overfit measure.
-
-{%highlight r%}
-N <- c(60, 80 ,100, 120, 140, 160) 
- 
-overfit <- c(1.32262787, 0.08528971, -0.06047749, -0.08422392, -0.11325889, -0.13347710)
-
-plot (N, overfit, ylab = "Mean of Overfit Measure")
-abline(h = 0, v = 0)
-
-{%endhighlight r%}
 
 
 And lastly we vary degree of $$f$$ and fix $$\sigma^2 = .5$$ and $$N = 80$$. The results can be seen in **Figure 6** In this case there is a lot of variability but overall increasing the degree results in a decrease in the overfit measure. However I think this is not so much because of a decrease in variance for $$g_{10}$$ as it is a consequence of an increase in bias for $$g_2$$.
