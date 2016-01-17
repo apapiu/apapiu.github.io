@@ -152,13 +152,6 @@ And lastly we vary degree of $$f$$ and fix $$\sigma^2 = .5$$ and $$N = 80$$. The
 
 ![](/img/poly6.png)
 
-"Varying the degree of f for $$N = 80$$, $$s^2 = .5$$"
+Varying the degree of f for $$N = 80$$, $$s^2 = .5$$
 
-{ % highlight r %}
-Q <- c(5, 10, 15, 20, 25, 30)
 
-overfit <- c(0.30510142, 0.26382851,  0.69782394, 0.04901888,  0.08816353, -0.06478407)
-
-plot(Q, overfit, ylab = "Mean of Overfit Measure")
-abline(h = 0)
-{% endhighlight %}
