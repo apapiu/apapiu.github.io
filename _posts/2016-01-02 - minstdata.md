@@ -1,6 +1,6 @@
 ---
-title: "Minst"
-output: html_document
+layout: post
+title: "MNIST digit regcognition Exploratory Data Analysis"
 ---
 
 We will be looking at the MNIST data set on Kaggle. The goal in this competition is to take an image of a handwritten single digit, and determine what that digit is.
