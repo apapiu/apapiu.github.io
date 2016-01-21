@@ -84,7 +84,7 @@ digit <- matrix(as.numeric(train[8,-1]), nrow = 28) #look at one digit
 image(digit, col = grey.colors(255))
 {% endhighlight %}
 
-![center](/Users/alexpapiu/GitHub/apapiu.github.io/figs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-3-1.png) 
+![center](/figs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-3-1.png) 
 
 Looks like a 3! 
 
@@ -106,7 +106,7 @@ plot + scale_x_discrete(limits=0:9) + xlab("digit label") +
     ylab("average intensity")
 {% endhighlight %}
 
-![center](/Users/alexpapiu/GitHub/apapiu.github.iofigs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-4-1.png) 
+![center](/figs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-4-1.png) 
 
 As we can see there are some differences in intensity. The digit "1" is the less intense while the digit "0" is the most intense. So this new feature seems to have some predictive value if you wanted to know if say your digit is a "1" or no. But the problem of course is that **different peple write their digits differently**. We can get a sense of this by plotting the distribution of the average intensity by label.
 
@@ -116,7 +116,7 @@ ggplot(train, aes(x=intensity)) +
     geom_density(aes(group= label, fill=as.factor(label)), alpha=0.3)
 {% endhighlight %}
 
-![center](/Users/alexpapiu/GitHub/apapiu.github.iofigs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-5-1.png) 
+![center](/figs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-5-1.png) 
 
 What can we observe from the histograms above? Well most intensity distributions seem roughly normally distributed but some have higher variance than others. The digit "1" seems to be the one people write most consistently across the board. Other than that the intensity feature isn't all that helpful. _However_ there is one little quirk hidden in the diagram above. Every distribution is unimodal (i.e. has one maxima) _except_ for the 7. Even before I analyize the data more closely I have a hunch as to why this might be: people write "7" in two different way. I know because I am one of the weirdos (well from an American perspective) who puts a little line through the middle - that's how I was taught attending school in Romania. I'll bet that second bump is caused by weirdos like me who line their sevens.
 
@@ -137,6 +137,6 @@ p4 <- qplot(subset(train, label ==9)$intensity, binwidth = .75,
 grid.arrange(p1, p2, p3,p4, ncol = 2)
 {% endhighlight %}
 
-![center](/Users/alexpapiu/GitHub/apapiu.github.iofigs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-6-1.png) 
+![center](/figs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-6-1.png) 
 
 
