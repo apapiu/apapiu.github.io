@@ -84,7 +84,7 @@ digit <- matrix(as.numeric(train[8,-1]), nrow = 28) #look at one digit
 image(digit, col = grey.colors(255))
 {% endhighlight %}
 
-![center](/Users/alexpapiu/GitHub/apapiu.github.iofigs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-3-1.png) 
+![center](/Users/alexpapiu/GitHub/apapiu.github.io/figs/MINST/Users/alexpapiu/GitHub/apapiu.github.iounnamed-chunk-3-1.png) 
 
 Looks like a 3! 
 
