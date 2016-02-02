@@ -54,7 +54,7 @@ ggplot(train, aes(x=intensity)) +
     geom_density(aes(group= label, fill=as.factor(label)), alpha=0.3)
 ```
 
-What can we observe from the histograms above? Well most intensity distributions seem roughly normally distributed but some have higher variance than others. The digit "1" seems to be the one people write most consistently across the board. Other than that the intensity feature isn't all that helpful. _However_ there is one little quirk hidden in the diagram above. Every distribution is unimodal (i.e. has one maxima) _except_ for the 7. Even before I analyize the data more closely I have a hunch as to why this might be: people write "7" in two different way. I know because I am one of the weirdos (well from an American perspective) who puts a little line through the middle - that's how I was taught attending school in Romania. I'll bet that second bump is caused by weirdos like me who line their sevens.
+What can we observe from the histograms above? Well most intensity distributions seem roughly normally distributed but some have higher variance than others. The digit "1" seems to be the one people write most consistently across the board. Other than that the intensity feature isn't all that helpful. Also sometimes density plots can be decieving so let's plos some historgrams for selected numbers. My guess is that 4 and 7 will have the highest variablilty. Growing up in Romania I was taught to "line" my sevens. In the US people don't really do that, but I'm curious if there are other weirdos like me :)
 
 ```{r}
 
@@ -73,5 +73,32 @@ p4 <- qplot(subset(train, label ==9)$intensity, binwidth = .75,
 
 grid.arrange(p1, p2, p3,p4, ncol = 2)
 ```
+It does seem that the intensity distributions for 4 and 7 are less "normal" than the distrubution for 1. The diestribution for 4 looks almost bimodal - a telling sign thay perhaps there are two different ways people tend to write their fours.
+Let's take a look at some images of fours and sevens.
+
+```{r}
+train4 <- train[train$label == 4, ]
+train7 <- train[train$label == 7, ]
+
+flip <- function(matrix){
+    apply(matrix, 2, rev)
+}
+
+par(mfrow=c(3,3))
+for (i in 20:28){
+    digit <- flip(matrix(rev(as.numeric(train4[i,-c(1, 786)])), nrow = 28)) #look at one digit
+    image(digit, col = grey.colors(255))
+}
+#a bunch of fours some are different
+
+
+par(mfrow=c(3,3))
+for (i in 10:18){
+    digit <- flip(matrix(rev(as.numeric(train7[i,-c(1, 786)])), nrow = 28)) #look at one digit
+    image(digit, col = grey.colors(255))
+}
+```
+
+Guess I am not so weird after all! See that seven in the middle, the one with the line though it? That's how I do it. Also notice how there are two different ways to do four as well. Interestingly these two are topologically different. One way has a "hole"" in the middle and the other doesn't. I was considering at first a topological approach to this classification - perhaps counting the holes in the digits but given the variability in the writing this will probably not work. 
 
 
