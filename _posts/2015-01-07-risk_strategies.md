@@ -77,7 +77,7 @@ for (i in count){
 
 {% endhighlight %}
 
-The first plot shows the number of armies the attacker expects to be left with on average in an n vs. n battle. We can see that as the number n of attacking and defending armies increases the advantage of the attacker becomes more tangible. For example in a 40 vs. 40 battle the expected value of armies remaining for the attacker is 7.3196 while in a 10 vs. 10 battle the expected value is 2.5528. So in this case **the attacker is at a slight advantage and the advantage increases slightly with the number of attacking armies.
+The first plot shows the number of armies the attacker expects to be left with on average in an n vs. n battle. We can see that as the number n of attacking and defending armies increases the advantage of the attacker becomes more tangible. For example in a 40 vs. 40 battle the expected value of armies remaining for the attacker is 7.3196 while in a 10 vs. 10 battle the expected value is 2.5528. So in this case **the attacker is at a slight advantage and the advantage increases slightly with the number of attacking armies.**
 ![](/img/riskplot2.png)
 
 The plot below looks at a different dimension: the probability that the attacker wins in a n vs. n battle. The story is similar to the graph above. If the attacker has 5 armies or more it is worth attacking a defending army of the same size. As the attacking army increases so does the probability of winning. When n = 40 we see that the probability of the attacker winning is 0.7003. So in this case the heuristic is pretty simple: **Attack an army of the same size if you have 5 armies or more.** And even in this case keep in mind that you might be left with very few (or even 0) armies.
@@ -118,13 +118,13 @@ length(distance[distance <8])/10000
 
 Remember the situation: you have 20 armies as the attacker and we are attacking a defending army of 10. Based on the code above, we get a probability of .9382 for distance = 8 so this means you are in between (3.5 and 19.5) 93.8% of the time. For the player this is not that great : it basically says you are 93% confident that you'll end up with anywhere in between 3.5 and 19.5 armies - a very wide interval. This cuts down to the main issue a lot of plaer have with risk - it's too high variance - luck playes to big of a role. So even if you play very well you'll only see the benefits in the very long run. However let's try to summarise the srategies we discovered using your Monte Carlo simulations:
 
-1. Risk is a high variance game. Even if you play optimally you will lose many times.
+**1. Risk is a high variance game. Even if you play optimally you will lose many times.**
 
-2. The Atacker has a slight advantage and the advantage become bigger as the number of attacking armies increases.
+**2. The Atacker has a slight advantage and the advantage become bigger as the number of attacking armies increases.**
 
-3. You gain most by attacking armies that are slighly weaker than yours. Never attack armies that are stronger than yours.
+**3. You gain most by attacking armies that are slighly weaker than yours. Never attack armies that are stronger than yours.**
 
-4. Attack an a defending force of the samze size only if you have 5 or more armies to attack with.
+**4. Attack an a defending force of the samze size only if you have 5 or more armies to attack with.**
 
 
 
