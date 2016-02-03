@@ -62,7 +62,7 @@ return(list(expec, winningprob, outcome)) #take hist(outcome[1,]) to see the dis
 
 ![](/img/riskplot1.jpg)
 
-There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  `[1] 4.45071` armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
+There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  4.45071 armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
 
 
 
