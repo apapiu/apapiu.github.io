@@ -64,7 +64,59 @@ return(list(expec, winningprob, outcome)) #take hist(outcome[1,]) to see the dis
 
 There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  4.45071 armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
 
+Let's try to make these observations a bit more precise. We will get some information in the case when the numbe of attacking and defending armies are equal. 
 
+{% highlight r %}
+count <- 1:40
+ex <- numeric(40)
+prob <- numeric(40)
+for (i in count){
+    ex[i] <- sim(i,i)[[1]]
+    prob[i] <- sim(i,i)[[2]]
+}
+
+{% endhighlight %}
+
+The first plot shows the number of armies the attacker expects to be left with on average in an n vs. n battle. We can see that as the number n of attacking and defending armies increases the advantage of the attacker becomes more tangible. For example in a 40 vs. 40 battle the expected value of armies remaining for the attacker is 7.3196 while in a 10 vs. 10 battle the expected value is 2.5528. So in this case **the attacker is at a slight advantage and the advantage increases slightly with the number of attacking armies.
+![](/img/riskplot2.png)
+
+The plot below looks at a different dimension: the probability that the attacker wins in a n vs. n battle. The story is similar to the graph above. If the attacker has 5 armies or more it is worth attacking a defending army of the same size. As the attacking army increases so does the probability of winning. When n = 40 we see that the probability of the attacker winning is 0.7003. So in this case the heuristic is pretty simple: **Attack an army of the same size if you have 5 armies or more.** And even in this case keep in mind that you might be left with very few (or even 0) armies.
+![](/img/riskplot3.png)
+
+
+Now lets keep the attacking number fixed at 20 and vary the number of defending armies.
+
+{% highlight r %}
+
+set.seed(124)
+ex3 <- numeric(40)
+prob3 <- numeric(40)
+for (i in count){
+    ex3[i] <- sim(20,i)[[1]]
+    prob3[i] <- sim(20,i)[[2]]
+}
+{% endhighlight %}
+
+The graph below shows the expected values of the armies the attacker (you) is left with as we vary the number of defending armies. 
+![](/img/riskplot4.png)
+
+The graph below shows the probability of wininng with 20 armies against a varying number of defending armies. There is quite an interesting takeway here: **the probability the attacker wins changes very steeply around n = 20**. This basically means that you should roughly attack armies that are slighly less numerous than yours but should _never_ attack armies that are more numerous than yours. In the case of 25 armies the probability the attacker wins aganst 15 defending armies is 0.8603% which is pretty good! But try to attack with 20 vs. 25 and your chance of success drops to a meek  0.3832. 
+
+![](/img/riskplot5.png)
+
+Finally lets move on to analyzing the variance of the game.
+
+{% highlight r %}
+
+set.seed(124)
+simulation <- sim(20, 10)
+dist <- simulation[[3]][1,]
+distance <- abs(dist - mean(dist)) 
+length(distance[distance <8])/10000
+{% endhighlight %}
+
+
+We get a probability of .9382 for distance = 8 so this means you are in between (3.5 and 19.5) %80 of the time so the game has lots of variance. Basically if a 93% confidence interval is (3.5, 19.5) a very wide interval. In other words even if you play very well.
 
 
 
