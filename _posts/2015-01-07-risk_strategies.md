@@ -62,7 +62,7 @@ return(list(expec, winningprob, outcome)) #take hist(outcome[1,]) to see the dis
 
 ![](/img/riskplot1.jpg)
 
-There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  4.45071 armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
+There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  4.45071 armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. Now let me state again: these results are not %100 precise. We are using a Monte Carlo simulation so there will be some error to our calculations. However we are repeating this experiment enough times for the error the be insiginificant for practical startegies for the game. Also this approach allows us to be more flexible. We can figure out any aspect of the battles simply by simulating the battle over and over.
 
 Let's try to make these observations a bit more precise. We will get some information in the case when the numbe of attacking and defending armies are equal. 
 
@@ -116,7 +116,15 @@ length(distance[distance <8])/10000
 {% endhighlight %}
 
 
-We get a probability of .9382 for distance = 8 so this means you are in between (3.5 and 19.5) %80 of the time so the game has lots of variance. Basically if a 93% confidence interval is (3.5, 19.5) a very wide interval. In other words even if you play very well.
+Remember the situation: you have 20 armies as the attacker and we are attacking a defending army of 10. Based on the code above, we get a probability of .9382 for distance = 8 so this means you are in between (3.5 and 19.5) 93.8% of the time. For the player this is not that great : it basically says you are 93% confident that you'll end up with anywhere in between 3.5 and 19.5 armies - a very wide interval. This cuts down to the main issue a lot of plaer have with risk - it's too high variance - luck playes to big of a role. So even if you play very well you'll only see the benefits in the very long run. However let's try to summarise the srategies we discovered using your Monte Carlo simulations:
+
+1. Risk is a high variance game. Even if you play optimally you will lose many times.
+
+2. The Atacker has a slight advantage and the advantage become bigger as the number of attacking armies increases.
+
+3. You gain most by attacking armies that are slighly weaker than yours. Never attack armies that are stronger than yours.
+
+4. Attack an a defending force of the samze size only if you have 5 or more armies to attack with.
 
 
 
