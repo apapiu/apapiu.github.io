@@ -13,23 +13,7 @@ However the probabilities themselves won't be that helpful during real play. Man
 - how many armies will you have (on average) once the battle is done?
 - how _certain_ are you about the expected value the number of armies you have remaining? 
 
-Our approach, while not necessarily the most precise but is certainly the most natural: just roll the corresponding dice over and over again and see what the outcomes are. Luckily computers can generate ([pseudo](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)) random rolls of dice so we don't have to do this ourselves. Here's a function `Rolls` written in R that simulates a battle between a number of attacking armies `atarm` here versus a number of defending armies called `defarm` and stops when either one player or the other runs out of pieces for the specific territory. Below I run the 14 versus 12 armies battle a few times. The first `[1] 1 0` means the attacker is left with one army after and the defender with 0. As you can see even from these random examples, there seems to be a lot of variability.
-
-{% highlight r %}
-> Rolls(14, 12)
-[1] 1 0
-> Rolls(14, 12)
-[1] 0 7
-> Rolls(14, 12)
-[1] 8 0
-> Rolls(14, 12)
-[1] 0 3
-{% endhighlight %}
-
-To get a better sense of the distribution we'll basically write some code to repeat the `Rolls(14, 12)` function a whole bunch of times (100000 times to be precise) and then look at the distribution of how many armies the attacker is left with.  
-![](/img/riskplot1.jpg)
-
-There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  `[1] 4.45071` armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
+Our approach, while not necessarily the most precise but is certainly the most natural: just roll the corresponding dice over and over again and see what the outcomes are. Luckily computers can generate ([pseudo](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)) random rolls of dice so we don't have to do this ourselves. We've built a function `Rolls` written in R (scroll down a bit to see it) that simulates a battle between a number of attacking armies `atarm` here versus a number of defending armies called `defarm` and stops when either one player or the other runs out of pieces for the specific territory. Below I run the 14 versus 12 armies battle a few times. The first `[1] 1 0` means the attacker is left with one army after and the defender with 0. As you can see even from these random examples, there seems to be a lot of variability.
 
 
 {% highlight r %}
@@ -54,6 +38,35 @@ Rolls <- function(atarm, defarm) { # here atarm is the number of guys -1 - the g
     return(c(atarm, defarm))
 }
 {% endhighlight %}
+
+{% highlight r %}
+> Rolls(14, 12)
+[1] 1 0
+> Rolls(14, 12)
+[1] 0 7
+> Rolls(14, 12)
+[1] 8 0
+> Rolls(14, 12)
+[1] 0 3
+{% endhighlight %}
+
+To get a better sense of the distribution we'll basically write some code to repeat the `Rolls(14, 12)` function a whole bunch of times (100000 times to be precise) and then look at the distribution of how many armies the attacker is left with. Let's call this function `r sim` 
+{% highlight r %}
+sim <- function(att, def, reps = 10000) { #simulates the battle reps times 
+outcome <- replicate(reps, Rolls(att,def))
+expec <- mean(outcome[1,]) 
+winningprob <- 1 - table(outcome[1,])[1]/reps
+return(list(expec, winningprob, outcome)) #take hist(outcome[1,]) to see the dist
+}
+{% endhighlight %}
+
+![](/img/riskplot1.jpg)
+
+There are a few observations we can make right away: the tall bar on the left represents the times the attacker loses. This happens roughly 28% of the times in the 14 versus 12 case. When the attacker wins the distribution is roughly bell shaped, in fact there are two curves one can see -- this is because of the game mechanics favoring losing two armies instead of one. The main takeaway however is just how spread out the distribution is. You can expect on average to be left with  4.45071 armies but there is still a good chance you'll have anywhere from 0 to 12 armies once you are done. 
+
+
+
+
 
 
 
