@@ -10,7 +10,7 @@ Let's load up the data from the Kaggle  [competition]("https://www.kaggle.com/c/
 ```{r}
 library(ggplot2)
 library(gridExtra)
-train <- read.csv("train.csv")
+load("train.Rd")
 ```
 
 Let's look at the dimension of train.
@@ -74,7 +74,7 @@ p4 <- qplot(subset(train, label ==9)$intensity, binwidth = .75,
 grid.arrange(p1, p2, p3,p4, ncol = 2)
 ```
 It does seem that the intensity distributions for 4 and 7 are less "normal" than the distrubution for 1. The diestribution for 4 looks almost bimodal - a telling sign thay perhaps there are two different ways people tend to write their fours.
-Let's take a look at some images of fours and sevens.
+Let's take a look at some images of fours and sevens. I also define a function flip that flips the image vertically. In order to make this work, we're going to flip the image and reverse [it](https://www.youtube.com/watch?v=UODX_pYpVxk).
 
 ```{r}
 train4 <- train[train$label == 4, ]
@@ -100,5 +100,152 @@ for (i in 10:18){
 ```
 
 Guess I am not so weird after all! See that seven in the middle, the one with the line though it? That's how I do it. Also notice how there are two different ways to do four as well. Interestingly these two are topologically different. One way has a "hole"" in the middle and the other doesn't. I was considering at first a topological approach to this classification - perhaps counting the holes in the digits but given the variability in the writing this will probably not work. 
+
+So we've discovered two useful facts so far: average intensity could have some predictive power and also that there is a lot of variability in the way people write digits. 
+
+###Symmetry as a factor:
+
+Some digits are symmetric (1, 3, 8, 0) some are not (2, 4, 5, 6, 8, 9). Creating a new feature capturing this could be useful. Let's see how can we go about this. Here's some code that creates a new feature called symmetry.
+
+```{r}
+par(mfrow = c(1,1))
+pixels <- train[,-c(1, 786)]/255
+
+symmetry <-  function(vect) {
+    matrix <- flip(matrix(rev(unlist(vect))))
+    flipped <- flip(matrix)
+    diff <- flipped - matrix
+    return(sum(diff*diff))
+}
+
+symmetry((pixels[1,]))
+sym <- (apply(X = pixels, MARGIN = 1, FUN = symmetry))
+
+means <- numeric(10)
+for (i in 0:9){
+    means[i+1] <- mean(sym[train$label == i])
+}
+
+means <- (means/intbylabel[,2])**(-1)
+
+mean <- data.frame( label = 0:9,symmetry = means)
+
+plot <- ggplot(data=mean, aes(x= label, y = symmetry)) +
+    geom_bar(stat="identity")
+plot + scale_x_discrete(limits=0:9) + xlab("digit label") + 
+    ylab("symmetry") #plots the avg intensity by label but it won't work.
+
+
+```
+
+What I have done above is create a new feature called symmetry. I wasn't exactly sure how to go about this so I just flipped the image matrix and subtracted it from the original. Then I looked at the "magnitude of the matrix" normalized it by the average intensity of each digit. With the normalizing - the more intense digits would be less symmetric simply because they have a higher average intensitiy. What can we observe from the plot above: 7 is the least symmetric digit by our computations while 1 is the most symmetric digit. The differences aren't that big however however this new feature does capture symmetry to some extent.
+
+## Building a Predictive Model:
+
+A lot more can be said about Feature Extraction on this dataset but I'd like to actually throw some algorithms at the data see how they perform. We have in this case a classification problem where the response variable has 10 different labels. Usually logistic regression is a good first choice for classification but since our response is not binary things are a bit more complicated. Off the top of my head I'd probably do $${10 \choose x2} = 45 $$ different binary logistic regresions for each combination of labels and then do a majority vote. Instead let's use decision trees.
+
+```{r, eval = FALSE}
+
+model <- rpart(label ~ ., data = train)
+pred_tree <- predict(model, train1, type = "class")
+truth <- table(predictions, train$label)
+accuracy <- sum(diag(truth))/length(train[,1]) #ouch accurcy is .63 still better than .1
+
+```
+Aaaand we get an accurcay of 63% on the _training_ set...not too great. Keep in mind however that a blind guess would give us an accurcay of only 10% since there are 10 different labels. 
+
+Ok so a tree didn't do that great but maybe an ensemble of trees will do better?
+
+###Random Forests:
+Random Forests seems like a decent option in this case since it can easily deal with the multiple responses. The only issue with this algorithm is that we it can be quite computationally intensive.
+
+There are a few parameters we'll have to worry about. The first one is the number of trees or boostrap samples for each bagging round. A larger number usually gives better test error without leading to overfitting but it also makes the computation more expensive. The second one is the number of features to be chosen in each bagging round: we'll just keep the default from the `randomForest` implementation, the integer closest to $$\sqrt(10)$$ in this case. Let's try doing it with 50 trees.
+
+```{r, eval = FALSE}
+library(randomForest)
+library(readr)
+
+set.seed(132)
+numTrain <- 40000
+numTrees <- 50
+
+rows <- sample(1:nrow(train), numTrain)
+labels <- as.factor(train[rows,1])
+train1 <- train[rows,-1]
+
+rf <- randomForest(train1, labels, ntree=numTrees)
+```
+
+```{r, echo = FALSE}
+library(randomForest)
+load(file = "rf.RData")
+```
+
+With the randomForests with 50 trees we get an out of bag error of `0.04685000`. Significantly better than what we had before! Also keep in mind that the out of bag (OOB) error is an _unbiased_ estimate of the test error. Also `randomForests` has a cool feature that allows us to see the OOB error based on the number of bagging rounds simply by calling `plot(rf)`. 
+
+The plot below gives us the OOB error by number of trees (or bagging rounds). It also slipts the error by label. We can see that the error decreases with the number of trees which is to be expected. However the rate of decrease is well, also decreasing. It looks like having more trees would only decrease the error rate very marginally - this is good news since my poor Macbook Pro had a hard time doing the algorithm even with 50 trees.
+
+```{r}
+plot(rf)
+```
+
+Another intersting thing is that not all digits have the same errors. And this makes sense: it is easier to differentiate between a 1 and a 0 than between a 4 and a 7. Let's take a closer look at this by plotting the OOB error for each label.
+
+```{r}
+err <- rf$err.rate #this is just OOB by label by number of trees
+
+errbydigit <- data.frame(Label = 1:9,Error = err[50, 2:10]) #error is the last row
+errdigitplot <- ggplot(data=errbydigit, aes(x=Label, y =Error)) +
+    geom_bar(stat="identity")
+errdigitplot + scale_x_discrete(limits=0:9) + xlab("Digit Label") + 
+    ylab("Error")
+```
+
+As we can see above not all digits are created equal. The digits "4", "9" and "6" have the largest errors. 
+
+
+### Learning Curves for RF:
+
+Another important questions we can ask: would we be better off with more data? And If so how much better? Converserly, perhaps we can obtaine the same error rates with significantly less data. One way to figure this out is to use learning curves. The entails varying the number of training examples and analyzing what happens to the training error and, more importantly the test error. Since in our case the `randomForest` algorithm almost always gives 100% in sample accuracy we will focus on the out of sample error. To be more precise we will plot the estimate of the out of sample error given by the out of bag error.
+
+```{r, eval = FALSE}
+trainnumb <- c(1000, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000,
+               35000, 40000)
+
+numTrees <- 25 #let's just do this to speed things up
+j = 1
+lcerror <- numeric(length(trainnumb))
+trainerror <-  numeric(length(trainnumb))
+for (i in trainnumb) {
+    numTrain = i
+    
+    rows <- sample(1:nrow(train), numTrain)
+    labels <- as.factor(train[rows,1])
+    train1 <- train[rows,-1]
+    
+    rf1 <- randomForest(train1, labels, ntree=numTrees)
+    err1 <- rf1$err.rate
+    lcerror[j] = err1[dim(err1)[1], 1]
+    
+    tabs <- table(predict(rf1, train1), labels)
+    tabs
+    trainerror[j] <- 1 - sum(diag(tabs))/length(train1[,1]) #Ein
+    j = j+1
+}
+```
+
+```{r, echo = FALSE}
+trainnumb <- c(1000, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000,
+               35000, 40000)
+load("lcurves.RData")
+```
+
+```{r}
+plot(learncurves, ylim = c(0,.25), xlab = "Training Examples",
+     ylab = "OOB Error", main = "Learning Curves")
+```
+
+As expected the more data we have the better our OOB error will be. It looks like having more data would improve our accuracy but not by much, the largest decrease in the error is until around 20000 examples - the error seems to stabilize somewhat after that.
+
 
 
