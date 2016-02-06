@@ -30,7 +30,7 @@ var foo = function(x) {
 foo(3)
 ```
 
-```{r}
+```r
 for (i in 1:10) {
 print i
 }
