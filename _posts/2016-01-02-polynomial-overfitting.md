@@ -3,7 +3,7 @@ layout: post
 title: "Polynomial Overfittting"
 ---
 
-A lot of times in Machine Learning we're faceed with the choice between a flexible model that is prone to overfitting (high variance) and a simpler model who might not capture the entire signal (high bias). To better understand the trade-offs I have devised an experiment inspired by an exercise in the book Learning From Data. We'll take a target function - a polynomial of some degree, add some noise, and then generate a number of training examples. Then we will fit two different functions: the first a polynomial of degree 2 and the second a polynomial of degree 10. We will then devise an overfit measure and see how well our two models are at capturing the signal of the original target function as we vary the number of examples, the amount of noise and the degree of the original functions.
+A lot of times in Machine Learning we're faced with the choice between a flexible model that is prone to overfitting (high variance) and a simpler model who might not capture the entire signal (high bias). To better understand the trade-offs I have devised an experiment inspired by an exercise in the book Learning From Data. We'll take a target function - a polynomial of some degree, add some noise, and then generate a number of training examples. Then we will fit two different functions: the first a polynomial of degree 2 and the second a polynomial of degree 10. We will then devise an overfit measure and see how well our two models are at capturing the signal of the original target function as we vary the number of examples, the amount of noise and the degree of the original functions.
 
 Let $$Q$$ be the degree of our target polynomial $$f$$, $$N$$ - the number of noisy examples generated and $$\sigma$$ the standard deviation of the noise. We will now fit a second degree polynomial $$g_2$$ and a tenth degree polynomial $$g_{10}$$ to the data we generated while varying $$Q$$, $$N$$, and $$\sigma$$ and see what insights we can get into overfitting. For a fixed triple $$(Q, N, \sigma)$$ the overfit measure will  be $$E_{out}(H_{10}) - E_{out}(H_2)$$ - the difference in out of sample error in fitting the data with a tenth and a second degree polynomial averaged over $$500$$ runs - the averaging is necessary since, as we shall see, the variance of $$E_{out}(g_2)$$ and $$E_{out}(g_{10})$$ can be high.         
 
@@ -139,10 +139,10 @@ And lastly we vary degree of $$f$$ and fix $$\sigma^2 = .5$$ and $$N = 80$$. The
 
 Varying the degree of f for $$N = 80$$, $$s^2 = .5$$
 
-##Conclusions:
+## Conclusions:
 So what can we conclude from our explorations? 
 
-1. Generally fitting a second degree polynomial gives a more stable model that is significantly less susceptible to noise than fitting a tenth degree polynomial. The expections to this is if you have a lot of training examples and you know the noise is low.
+1. Generally fitting a second degree polynomial gives a more stable model that is significantly less susceptible to noise than fitting a tenth degree polynomial. The exceptions to this is if you have a lot of training examples and you know the noise is low.
 
 2. An increase in noise leads to an increase in overfitting and higher variance. 
 
