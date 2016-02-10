@@ -15,6 +15,8 @@ and $$ minX = min\{X_1, X_2, ..., X_n\} $$
 While $$\overline X$$ is an unbiased estimate, $$minX$$ is not, meaning the expected value of $$\overline X $$ will be the expected value of $X$ but the  expected value of $$minX$$ will be lower.
 
 
+<iframe height="400" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~ouzor/33/count-vs-mpg/" width="450" frameBorder="0"></iframe>
+
 Here's some code and the histograms. 
 
 {% highlight r %}
