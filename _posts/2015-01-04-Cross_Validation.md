@@ -17,7 +17,18 @@ While $$\overline X$$ is an unbiased estimate, $$minX$$ is not, meaning the expe
 
 <iframe height="400" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~ouzor/33/count-vs-mpg/" width="450" frameBorder="0"></iframe>
 
-Here's some code and the histograms. 
+Here's some code and the histograms.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+</body>
+</html>
 
 {% highlight r %}
 library(ggplot2)
