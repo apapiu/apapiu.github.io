@@ -21,7 +21,7 @@ Here's some code and the histograms.
 
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 
 </head>
 <body style="background-color:white;">
