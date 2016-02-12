@@ -41,22 +41,14 @@ While $$\overline X$$ is an unbiased estimate, $$minX$$ is not, meaning the expe
 
 Here's some code and the histograms.
 
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 
 </head>
-<body style="background-color:white;">
-<div id="htmlwidget_container">
-  <div id="htmlwidget-5850" style="width:960px;height:500px;" class="simpleNetwork"></div>
-</div>
-<script type="application/json" data-for="htmlwidget-5850">{"x":{"links":{"source":[1,2,3,4,5,5,5,5,6,6,6,6],"target":[2,3,4,1,1,2,3,4,1,2,3,4]},"options":{"linkDistance":50,"charge":-200,"fontSize":7,"fontFamily":"serif","linkColour":"#666","nodeColour":"#3182bd","nodeClickColour":"#E34A33","textColour":"#3182bd","opacity":0.6,"zoom":false}},"evals":[]}</script>
-<script type="application/htmlwidget-sizing" data-for="htmlwidget-5850">{"viewer":{"width":450,"height":350,"padding":10,"fill":true},"browser":{"width":960,"height":500,"padding":10,"fill":true}}</script>
+<h1>I am a cat</h1>
 </body>
 </html>
-
-
-
 
 {% highlight r %}
 library(ggplot2)
