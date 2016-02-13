@@ -75,5 +75,10 @@ This is the left-skewed distribution we get by taking the minimum of the Mean Sq
 
 There are two ways to get an unbiased estimate in this case that come to mind. One is once you choose your model using cross-validation, you will do another cross-validation (or a whole epoch, say) only with the model you have - this way you get a distribution of the cross-validation error for the model you picked. Or the other, more basic option is to simply set aside a test set that is never looked at or touched in any way and then see what error you get on that set.
 
+<div>
+    <a href="https://plot.ly/~apapiu/0/" target="_blank" title="Ratio of Colege Educated Single Men to Women &lt;br&gt; (Hover for breakdown)" style="display: block; text-align: center;"><img src="https://plot.ly/~apapiu/0.png" alt="Ratio of Colege Educated Single Men to Women &lt;br&gt; (Hover for breakdown)" style="max-width: 100%;width: 1188px;"  width="1188" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="apapiu:0"  src="https://plot.ly/embed.js" async></script>
+</div>
+
 
 
