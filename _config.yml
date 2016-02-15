@@ -35,12 +35,12 @@ navbar-links:
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
   name: Alex Papiu
-  email: "youremail@domain.com"
+  email: "alex.papiu@gmail.com"
   facebook: yourname  apapiu
-  github: yourname    apapiu
-  twitter: yourname   # eg. daattali
-  linkedin: yourlink  pub/apapiu # eg. "pub/dean-attali/8/946/143"
-  stackoverflow: yourlink  6472/alexandru-papiu # eg. "3943160/daattali"
+  github: apapiu
+  twitter: apapi
+  linkedin: pub/apapiu # eg. "pub/dean-attali/8/946/143"
+  stackoverflow:6472/alexandru-papiu # eg. "3943160/daattali"
  
 # Select which links to show in the footer
 footer-links-active:
@@ -59,7 +59,7 @@ url-pretty: "apapiu.github.com"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Misc --- #
 
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-#disqus: ""
+disqus: "apapiu"
 
 # Fill in your Google Analytics ID to track your website using GA
 google_analytics: "UA-73791033-1"
