@@ -1,10 +1,12 @@
 ---
 layout: page
 title: CV
-subtitle: 
+subtitle: hmm
 ---
 
 ###**Alexandru Papiu**
+
+___
 
 Github: github.com/apapiu    
 LinkedIn: linkedin.com/in/apapiu    
