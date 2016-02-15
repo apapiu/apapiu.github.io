@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: 
+subtitle: Alexandru Papiu
 ---
 
 Hey I'm Alex and I'm a mathematician doing [research](http://www.math.wustl.edu/~apapiu/) in discrete geometry, combinatorics and graph theory. I have become quite intersted in machine learning and data visualization and have started this blog as a way to document my journey in the neblous world of data science.
