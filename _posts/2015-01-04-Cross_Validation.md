@@ -3,7 +3,22 @@ layout: post
 title: Cross Validation Error Pitfalls
 ---
 
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="test_files/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="test_files/d3-3.5.2/d3.min.js"></script>
+<script src="test_files/simpleNetwork-binding-0.2.8/simpleNetwork.js"></script>
 
+</head>
+<body style="background-color:white;">
+<div id="htmlwidget_container">
+  <div id="htmlwidget-1430" style="width:960px;height:500px;" class="simpleNetwork"></div>
+</div>
+<script type="application/json" data-for="htmlwidget-1430">{"x":{"links":{"source":["A","A","A","A","B","B","C","C","D"],"target":["B","C","D","J","E","F","G","H","I"]},"options":{"linkDistance":50,"charge":-200,"fontSize":7,"fontFamily":"serif","linkColour":"#666","nodeColour":"#3182bd","nodeClickColour":"#E34A33","textColour":"#3182bd","opacity":0.6,"zoom":false}},"evals":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-1430">{"viewer":{"width":450,"height":350,"padding":10,"fill":true},"browser":{"width":960,"height":500,"padding":10,"fill":true}}</script>
+</body>
+</html>
 
 Let's say you have 10 models that you want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
 
