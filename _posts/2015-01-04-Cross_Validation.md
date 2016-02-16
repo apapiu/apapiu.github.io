@@ -40,7 +40,7 @@ There are two ways to get an unbiased estimate in this case that come to mind. O
 
  
 
-{% include d3graph.html %}
+<div>{% include d3graph.html %} </div>
 
 
 
