@@ -6,7 +6,7 @@ I made my first interactive graph with [plotly]("plot.ly") in R. I took data fro
 
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plot.ly/~apapiu/0.embed"></iframe>
 
-I am also including the code. I used ACS census data and some munging to get the ratios by state then use `plot_ly` function to plot the map above.
+I am also including the code. I used ACS census data and some munging to get the ratios by state then used the `plot_ly` function to plot the map above.
 
 
 {% highlight r %}
