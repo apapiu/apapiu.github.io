@@ -8,5 +8,7 @@ Hello and welcome to my blog! I'm doing a PhD in  math at Washington University 
 
 When I am not doing math or playing around with data I like to ride my bike, eat tacos, take [photos](http://alexpapiu.tumblr.com) and think about urbanism.
 
-If you have any questions comments or suggestions shot me an email or talk to me on twitter. The various way to contact me are at the bottom of the page. Thanks for stopping by!
+If you have any questions comments or suggestions shot me an email or talk to me on twitter. The various way to contact me are at the bottom of the page. 
+
+Thanks for stopping by!
 
