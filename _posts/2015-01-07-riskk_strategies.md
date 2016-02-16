@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "blah"
+title: "Interactive Maps of NYC: Biking and Ancecstry"
 ---
 
-Let's see if this is going to work.
+##Let's see if this is going to work.
 
 {% include project.html %}
