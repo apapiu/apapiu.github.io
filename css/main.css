@@ -3,8 +3,8 @@
 /* --- General --- */
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 40px;
+  font-family: 'Lora', 'Times New Roman', serif; <!--for the writing under the post title-->
+  font-size: 10px;
   color: #404040;
   position: relative;
   background: #FFF;
@@ -18,8 +18,8 @@ p a {
   color: #008AFF;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-weight: 500;
 }
 a {
   color: #008AFF;
