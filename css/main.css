@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Lora', 'Times New Roman', serif; <!--for the writing under the post title-->
-  font-size: 10px;
+  font-size: 15px;
   color: #404040;
   position: relative;
   background: #FFF;
@@ -50,7 +50,7 @@ hr.small {
 }
 
 .main-explain-area {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Times New Roman', serif;
   padding: 15px inherit;
 }
 
@@ -96,7 +96,7 @@ img {
 .navbar-custom {
   background: #F5F5F5;
   border-bottom: 1px solid #EAEAEA;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Times New Roman', serif;
 }
 
 .navbar-custom .nav li a {
@@ -339,7 +339,7 @@ header.header-post .post-heading .post-subheading {
 /* --- Pager --- */
 
 .pager li a {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Times New Roman', serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
