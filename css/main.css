@@ -261,16 +261,16 @@ footer .theme-by {
 }
 .post-preview .post-meta,
 .post-heading .post-meta {
-  color: #808080;
+  color: #000000;
   font-size: 18px;
-  font-style: italic;
+  font-style: normal;
   margin: 0 0 10px;
 }
 .post-preview .post-entry {
   font-family: 'Lora', 'Times New Roman', serif;
 }
 .post-preview .post-read-more {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 @media only screen and (min-width: 768px) {
