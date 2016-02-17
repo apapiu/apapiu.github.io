@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 30px;
+  font-size: 15px;
   color: #404040;
   position: relative;
   background: #FFF;
@@ -33,7 +33,7 @@ blockquote {
   font-style: italic;
 }
 hr.small {
-  max-width: 100px;
+  max-width: 150px;
   margin: 15px auto;
   border-width: 4px;
   border-color: inherit;
@@ -267,7 +267,7 @@ footer .theme-by {
   margin: 0 0 10px;
 }
 .post-preview .post-entry {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Times New Roman', serif;
 }
 .post-preview .post-read-more {
   font-weight: 800;
@@ -304,7 +304,7 @@ header.header-page .page-heading .page-subheading {
   font-size: 24px;
   line-height: 1.1;
   display: block;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Times New Roman', serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
