@@ -63,4 +63,4 @@ plot_ly(singles.state, z = ratios.col, locations = code, type = 'choropleth',
         text = hover2, colorbar = list(title = "Ratio")) %>%
     layout(title = 'Ratio of Colege Educated Single Men to Women <br> (Hover for breakdown)',geo = g)
 
-{% endhighlight %}
+{% endhighlight r %}
