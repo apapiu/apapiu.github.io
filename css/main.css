@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 17px;
+  font-size: 18px;
   color: #404040;
   position: relative;
   background: #FFF;
@@ -18,8 +18,8 @@ p a {
   color: #008AFF;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
 }
 a {
   color: #008AFF;
@@ -34,7 +34,7 @@ blockquote {
 }
 hr.small {
   max-width: 100px;
-  margin: 10px auto;
+  margin: 15px auto;
   border-width: 4px;
   border-color: inherit;
   border-radius: 3px;
@@ -50,7 +50,7 @@ hr.small {
 }
 
 .main-explain-area {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 15px inherit;
 }
 
@@ -96,7 +96,7 @@ img {
 .navbar-custom {
   background: #F5F5F5;
   border-bottom: 1px solid #EAEAEA;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .navbar-custom .nav li a {
@@ -263,14 +263,14 @@ footer .theme-by {
 .post-heading .post-meta {
   color: #808080;
   font-size: 18px;
-  font-style: normal;
-  margin: 10px 0 0;
+  font-style: italic;
+  margin: 0 0 10px;
 }
 .post-preview .post-entry {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .post-preview .post-read-more {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 @media only screen and (min-width: 768px) {
@@ -304,7 +304,7 @@ header.header-page .page-heading .page-subheading {
   font-size: 24px;
   line-height: 1.1;
   display: block;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
@@ -339,7 +339,7 @@ header.header-post .post-heading .post-subheading {
 /* --- Pager --- */
 
 .pager li a {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
@@ -377,36 +377,36 @@ header.header-post .post-heading .post-subheading {
 
 /* --- Tables --- */
 
-.blog-post table {
+table {
   padding: 0;
 }
-.blog-post table tr {
+table tr {
   border-top: 1px solid #cccccc;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
 }
-.blog-post table tr:nth-child(2n) {
+table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
-.blog-post table tr th {
+table tr th {
   font-weight: bold;
   border: 1px solid #cccccc;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
 }
-.blog-post table tr td {
+table tr td {
   border: 1px solid #cccccc;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
 }
-.blog-post table tr th :first-child,
-.blog-post table tr td :first-child {
+table tr th :first-child,
+table tr td :first-child {
   margin-top: 0;
 }
-.blog-post table tr th :last-child,
-.blog-post table tr td :last-child {
+table tr th :last-child,
+table tr td :last-child {
   margin-bottom: 0;
 }
