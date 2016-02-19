@@ -19,6 +19,8 @@ p a {
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+
   font-weight: 600;
 }
 a {
@@ -97,6 +99,8 @@ img {
   background: #F5F5F5;
   border-bottom: 1px solid #EAEAEA;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+
 }
 
 .navbar-custom .nav li a {
