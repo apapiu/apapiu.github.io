@@ -97,6 +97,8 @@ img {
   background: #F5F5F5;
   border-bottom: 1px solid #EAEAEA;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+
 }
 
 .navbar-custom .nav li a {
