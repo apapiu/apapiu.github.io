@@ -6,10 +6,8 @@ title: Cross Validation Error Pitfalls
 <iframe src="https://apapiu.shinyapps.io/FirstShiny/" style="border: none; width: 1000px; height: 500px"></iframe>
 
 
-<iframe src="http://rpubs.com/apapiu/age" style="border: none; width: 1000px; height: 500px"></iframe>
-
-
-<iframe src="//rstudio-pubs-static.s3.amazonaws.com/152755_ef67c4b0944848e89728bb212e1d42f8.html"></iframe>
+<iframe src="//rstudio-pubs-static.s3.amazonaws.com/152755_ef67c4b0944848e89728bb212e1d42f8.html"
+style="border: none; width: 1000px; height: 500px"></iframe>
 
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
 
