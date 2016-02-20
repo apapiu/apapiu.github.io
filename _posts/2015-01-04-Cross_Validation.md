@@ -6,6 +6,9 @@ title: Cross Validation Error Pitfalls
 <iframe src="https://apapiu.shinyapps.io/FirstShiny/" style="border: none; width: 1000px; height: 500px"></iframe>
 
 
+<iframe src="http://rpubs.com/apapiu/age" style="border: none; width: 1000px; height: 500px"></iframe>
+
+
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
 
 In order to pick the best model we will look at the cross validation errors and then pick the one that gives the smallest error. **One of the mistakes I made early however was to assume that this error is an unbiased estimate of the true test error.** After a bit of thinking this is clearly not true. By choosing the minimum test error every time we do cross-validation on the 10 models we shift the distribution of the real test error to the left. 
