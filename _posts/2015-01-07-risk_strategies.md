@@ -10,7 +10,7 @@ The board is an _approximate_ map of the world and players can attack territorie
 
 <iframe 
 src="//rstudio-pubs-static.s3.amazonaws.com/153331_f52f821f34f440d7b8389d68f3823dbd.html" 
-style="border: none; width: 700px; height: 700px">
+style="border: none; width: 850px; height: 700px">
 </iframe>
 
 
