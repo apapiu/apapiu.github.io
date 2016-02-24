@@ -8,8 +8,10 @@ The game of Risk is a turn-based strategy game where players battle each other t
 The board is an _approximate_ map of the world and players can attack territories adjacent to them. What's neat about this is that the actual layout doesn't matter that much, all that matters is how the teritories are connected with each other! So let's ignore the structure of the map itself and look at the structure we are really interested in: the graph where the territories are the nodes and where we draw edges between adjacent territories. Since I couldn't quite find a satisfactory map online I decided to make my own. Not only that but I made it interactive! I used the amazing [networkD3](https://christophergandrud.github.io/networkD3/) package - **see [here](http://rpubs.com/apapiu/riskgraph) for the interactive map.** - you can click and drag the nodes around! Since I couldn't figure out how to embed the interactive map in this post we'll have to be satisfied with a boring old static image.
 
 
-<iframe src="//rstudio-pubs-static.s3.amazonaws.com/153331_f52f821f34f440d7b8389d68f3823dbd.html" 
-style="border: none; width: 700px; height: 700px></iframe>
+<iframe 
+src="//rstudio-pubs-static.s3.amazonaws.com/153331_f52f821f34f440d7b8389d68f3823dbd.html" 
+style="border: none; width: 700px; height: 700px">
+</iframe>
 
 
 From a game theoretic point of view the first question is who has the advantage, the attacker or the defender? On one hand the defender only rolls 2 dice - one less than the defender, on the other hand the attacker loses armies in the case of equal die. It turns out the computation is not so easy, it's easy to overcount cases (see [here](https://www.researchgate.net/publication/266313658_Markov_chains_and_the_RISK_board_game) for an incorrect.  A correct version of the computations by Jason Osborne can be found [here](http://www4.stat.ncsu.edu/~jaosborn/research/RISK.pdf). Once the battle probabilities are found one can use recursion or Markov Chains to figure out probabilities of winning between mutiple armies. So if you want to say see what the probability of winning in a 9 versus 7 battle you can look at Table 3 in Jason's paper in see that it's $$72.6\%$$.
