@@ -128,12 +128,11 @@ Remember the situation: you have 20 armies as the attacker and we are attacking 
 
 **1. Risk is a high variance game. Even if you play optimally you will lose many times.**
 
-**2. The Atacker has a slight advantage and the advantage become bigger as the number of attacking armies increases.**
+**2. The Attacker has a slight advantage and the advantage become bigger as the number of attacking armies increases.**
 
-**3. You gain most by attacking armies that are slighly weaker than yours. Never attack armies that are stronger than yours.**
+**3. You gain most by attacking armies that are slightly weaker than yours. Never attack armies that are stronger than yours.**
 
-**4. Attack an a defending force of the samze size only if you have 5 or more armies to attack with.**
-
+**4. Attack a defending force of the same size only if you have 5 or more armies to attack with.**
 
 
 
