@@ -1,12 +1,30 @@
 ---
 layout: post
-title: To be Young and Single
+title: Singlehood in America: a Look at the ACS Census
 ---
-I made my first interactive graph with [plotly]("plot.ly") in R. I took data from the American Community Survey and looked at the ratio of single men to single women aged 18 - 35 with a college degree. Here's the graph below. It's not looking so good for the ladies I am afraid. Move your mouse over any state to find more detailed information. 
+I will be looking at data from the American Community Survey and try to find patterns in the way Americans date, marry and divorce.
+
+
+<div>
+    <a href="https://plot.ly/~apapiu/6/" target="_blank" title="Marital Status by Age" style="display: block; text-align: center;"><img src="https://plot.ly/~apapiu/6.png" alt="Marital Status by Age" style="max-width: 100%;width: 1188px;"  width="1188" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="apapiu:6"  src="https://plot.ly/embed.js" async></script>
+</div>
+
+
+<div>
+    <a href="https://plot.ly/~apapiu/4/" target="_blank" title="Ratio of Single Men to Women Aged 18 to 35 
+           &lt;br&gt; (Hover for breakdown)" style="display: block; text-align: center;"><img src="https://plot.ly/~apapiu/4.png" alt="Ratio of Single Men to Women Aged 18 to 35 
+           &lt;br&gt; (Hover for breakdown)" style="max-width: 100%;width: 1188px;"  width="1188" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="apapiu:4"  src="https://plot.ly/embed.js" async></script>
+</div>
+
+
+
+and looked at the ratio of single men to single women aged 18 - 35 with a college degree. Here's the graph below. It's not looking so good for the ladies I am afraid. Move your mouse over any state to find more detailed information. 
 
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plot.ly/~apapiu/0.embed"></iframe>
 
-I am also including the code. I used ACS census data and some munging to get the ratios by state then used the `plot_ly` function to plot the map above.
+I am also including the code. I used ACS census data and some munging to get the ratios by state then used the `plot_ly` function to plot the maps and graphs above.
 
 
 {% highlight r %}
@@ -27,9 +45,14 @@ singbysex.col <- table(ysingles.college$SEX, ysingles.college$ST)
 ratios.col <- singbysex.col[1,]/singbysex.col[2,] #ratios for college
 
 df <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv")
-#[1] AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI
-#[23] MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT
-#[45] VT VA WA WV WI WY
+
+ggplotly(ggplot(cens.over15, aes(x = AGEP, ..count.., fill = as.factor(MAR))) +
+        geom_density(position = 'identity', alpha = 0.4) +
+        xlab("Age") + ylab("Count") +
+        scale_fill_discrete(name = "Marital Status", 
+                            labels = c("Married", "Widowed", "Divorced",
+                                       "Separated", "Never Married")))
+
 
 singles.state <- data.frame(code = df$code, ratios = ratios[-11],
                             ratios.col = ratios.col[-11]) #no washingoton DC
