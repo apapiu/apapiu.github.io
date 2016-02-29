@@ -2,7 +2,8 @@
 layout: post
 title: Singlehood in America - a look at the ACS Census
 ---
-I will be looking at data from the American Community Survey and try to find patterns in the way Americans date, marry and divorce.
+
+I will be looking at data from the American Community Survey and try to find patterns in the way Americans date, marry and divorce. This is still work in progress but I figured I'd add some plots and maps to begin with.
 
 
 <div>
