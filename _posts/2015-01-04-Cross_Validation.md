@@ -4,7 +4,7 @@ title: Cross Validation Error Pitfalls
 ---
 
 
-<iframe src="https://apapiu.shinyapps.io/approximating_pi/" style="border: none; width: 440px; height: 500px"></iframe>
+<iframe src="https://apapiu.shinyapps.io/approximating_pi/" style="border: none; width: 1200px; height: 1200px"></iframe>
 
 
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
