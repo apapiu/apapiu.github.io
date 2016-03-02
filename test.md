@@ -1,4 +1,46 @@
 draft:
+## How to analyze a 10GB dataset in R without all the fuss.
+
+
+You have a dataset that is large and reasonably well structured and formatted.
+
+The result is code that is elegant, concise, readable and fast.
+
+Your folder should contain three files: 
+
+ - the dataset (usually a .csv file)
+ -  the .R script
+ - the html output of Markdown 
+
+You can use 
+
+Here are my tips:
+
+- use the `data.table` package (or `dplyr` if you have less than 1 million rows)
+- avoid intermediate variables - use pipes( `%>%`)  or chaining( `[...]`) instead
+
+Another thing that comes naturally from this is that you have no real reason to save your workspace - the only data frame in it will be your original dataset which is usually to large to save anyways.
+
+
+Basic WorkFlow:
+1.  use `fread` to read your data in memory
+2.  Make a list of questions you'd like to know about the data.
+3.  For each of your questions, use `data.table` to aggregate, group and modify your data
+4.  pipe the results from 2 and output your result as a table or plot
+
+```{r}
+fread("data.csv")
+
+for (i in questions) {
+	data[group by, aggregate, filter][...][...] %>%
+		ggplot(aes(...)) OR head()
+		repeat or move to the next question.}
+
+rmakrdown::render(analysis.R)
+	
+
+```
+
 
 library(dplyr)
 library(data.table)
