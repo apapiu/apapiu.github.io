@@ -11,6 +11,6 @@ have so much potential as teaching tools, hopefully we'll see more of them in ma
 
 <iframe 
 src="https://apapiu.shinyapps.io/approximating_pi/" 
-style="border: none; width: 1000px; height: 1000px">
+style="border: none; width: 1200px; height: 1100px">
 </iframe>
 
