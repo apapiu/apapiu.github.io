@@ -13,7 +13,7 @@ I do most of the analysis you see in:
 - Python (`pandas`, `scikit-learn` in jupyter)
 - SageMath (for pure math stuff)
 
-I also try to keep my blog posts as reproducible as possible. You can also see my code of on [Github](https://github.com/apapiu?tab=repositories).
+I also try to keep my blog posts as reproducible as possible. You check out my code on [Github](https://github.com/apapiu?tab=repositories).
 
 When I am not doing math or playing around with data I like to ride my bike, eat tacos, take [photos](http://alexpapiu.tumblr.com) and think about urbanism.
 
