@@ -18,6 +18,6 @@ I also try to keep my blog posts as reproducible as possible. You check out my c
 
 When I am not doing math or playing around with data I like to ride my bike, eat tacos, take [photos](http://alexpapiu.tumblr.com), play music, and think about urbanism.
 
-If you have any questions comments or suggestions shot me an email or say hi on (twitter)[]. The various way to contact me are at the bottom of the page. 
+If you have any questions comments or suggestions shot me an email or say hi on [twitter](https://twitter.com/apapiu). The various way to contact me are at the bottom of the page. 
 
 Thanks for stopping by!
