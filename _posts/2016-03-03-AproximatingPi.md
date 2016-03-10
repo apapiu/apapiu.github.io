@@ -3,9 +3,9 @@ layout: post
 title: A Shiny App honoring Pi
 ---
 
-With March 14 looming on the horizon I decided to make a little interactive visualizaton on how to approximate Pi by randomly generating points in a square. This is a certainly [not a novel(https://en.wikipedia.org/wiki/Monte_Carlo_integration) idea but I think it touches on two really important topics: the nature of volume/area and the nature of uncertainty/randomness and it does so in an accesible fun way. Hopefully we'll see more interactive tools in math and science classes - I think they have a lot of potential.
+With March 14 looming on the horizon I decided to make a little interactive visualizaton on how to approximate Pi by randomly generating points in a square. This is a certainly [not a novel](https://en.wikipedia.org/wiki/Monte_Carlo_integration) idea but I think it touches on two really important topics: the nature of volume/area and the nature of uncertainty/randomness and it does so in an accesible fun way. Hopefully we'll see more interactive tools in math and science classes - I think they have a lot of potential.
 
-Anyways check the Shiny app out below! It might take a few seconds to load.
+Anyways check the app out below! It might take a few seconds to load.
 
 
 
@@ -14,7 +14,7 @@ src="https://apapiu.shinyapps.io/Pies/"
 style="border: none; width: 1000px; height: 1100px">
 </iframe>
 
-Here's the code - nothing too fancy.
+Here's the code in R - nothing too fancy.
 
 {% highlight r %}
 
