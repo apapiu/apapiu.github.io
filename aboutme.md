@@ -10,7 +10,7 @@ I have become quite intersted in machine learning and data visualization and hav
 
 I do most of the analysis you see in:    
 - R (`tidyr %>% dplyr/data.table %>% ggplot/htmlwidets %<>% caret %>% Rmarkdown/Shiny`) 
-- Python (`pandas`, `scikit-learn` in JuPyteR)
+- Python (`pandas`, `scikit-learn` in jupyter)
 - SageMath (for pure math stuff)
 
 I also try to keep my blog posts as reproducible as possible. You can also see my code of on [Github](https://github.com/apapiu?tab=repositories).
