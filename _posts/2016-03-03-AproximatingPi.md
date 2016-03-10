@@ -7,10 +7,9 @@ generating points in a square. I really enjoyed making it and playing around wit
 have so much potential as teaching tools, hopefully we'll see more of them in math and science classrooms. 
 
 
-https://apapiu.shinyapps.io/Pies/
 
 <iframe 
 src="https://apapiu.shinyapps.io/Pies/" 
-style="border: none; width: 1100px; height: 1100px">
+style="border: none; width: 1000px; height: 1100px">
 </iframe>
 
