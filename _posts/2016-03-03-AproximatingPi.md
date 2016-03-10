@@ -10,6 +10,6 @@ have so much potential as teaching tools, hopefully we'll see more of them in ma
 
 <iframe 
 src="https://apapiu.shinyapps.io/Pies/" 
-style="border: none; width: 800px; height: 900px">
+style="border: none; width: 1000px; height: 1100px">
 </iframe>
 
