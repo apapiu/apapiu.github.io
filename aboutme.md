@@ -10,7 +10,7 @@ I have become quite intersted in machine learning and data visualization and hav
 
 I do most of the analysis you see in:  
 
-- R (tidyr %>% dplyr/data.table %>% ggplot/htmlwidets %<>% caret %>% Rmarkdown/Shiny) 
+- R (tidyr %>% dplyr/data.table %>% ggplot/htmlwidgets %<>% caret %>% Rmarkdown/Shiny) 
 - Python (pandas, scikit-learn in jupyter)
 - SageMath (for pure math stuff)
 
