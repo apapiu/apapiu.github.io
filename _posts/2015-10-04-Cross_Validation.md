@@ -38,46 +38,10 @@ This is the left-skewed distribution we get by taking the minimum of the Mean Sq
 
 There are two ways to get an unbiased estimate in this case that come to mind. One is once you choose your model using cross-validation, you will do another cross-validation (or a whole epoch, say) only with the model you have - this way you get a distribution of the cross-validation error for the model you picked. Or the other, more basic option is to simply set aside a test set that is never looked at or touched in any way and then see what error you get on that set.
 
-<meta charset="utf-8">
-<style>
 
-path {
-  fill: none;
-  stroke: steelblue;
-}
-
-</style>
-<body>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
-<script>
-
-var width = 960,
-    height = 500;
-
-var projection = d3.geo.albersUsa()
-    .scale(1000)
-    .translate([width / 2, height / 2]);
-
-var path = d3.geo.path()
-    .projection(projection);
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-d3.json("/mbostock/raw/4090846/us.json", function(error, us) {
-  if (error) throw error;
-
-  svg.append("path")
-      .attr("d", path({
-        type: "MultiPolygon",
-        coordinates: topojson.feature(us, us.objects.counties).features
-            .filter(function(d) { return d.geometry && d.geometry.coordinates.length; })
-            .map(function(d) { var b = d3.geo.bounds(d); return [[b[0], [b[0][0], b[1][1]], b[1], [b[1][0], b[0][1]], b[0]]]; })
-      }));
-});
-
-</script>
+<svg width="50" height="50">
+    <circle cx="25" cy="25" r="22"
+     fill="blue" stroke="gray" stroke-width="2"/>
+</svg>
 
 
