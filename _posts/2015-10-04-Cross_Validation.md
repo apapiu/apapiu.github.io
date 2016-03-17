@@ -3,54 +3,6 @@ layout: post
 title: Cross Validation Error Pitfalls
 ---
 
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-.states {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-}
-
-</style>
-<body>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
-<script>
-
-var width = 960,
-    height = 500;
-
-var fill = d3.scale.log()
-    .domain([10, 500])
-    .range(["brown", "steelblue"]);
-
-var path = d3.geo.path();
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-d3.json("/mbostock/raw/4090846/us.json", function(error, us) {
-  if (error) throw error;
-
-  svg.append("g")
-      .attr("class", "counties")
-    .selectAll("path")
-      .data(topojson.feature(us, us.objects.counties).features)
-    .enter().append("path")
-      .attr("d", path)
-      .style("fill", function(d) { return fill(path.area(d)); });
-
-  svg.append("path")
-      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
-      .attr("class", "states")
-      .attr("d", path);
-});
-
-</script>
-
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
 
 In order to pick the best model we will look at the cross validation errors and then pick the one that gives the smallest error. **One of the mistakes I made early however was to assume that this error is an unbiased estimate of the true test error.** After a bit of thinking this is clearly not true. By choosing the minimum test error every time we do cross-validation on the 10 models we shift the distribution of the real test error to the left. 
@@ -86,6 +38,46 @@ This is the left-skewed distribution we get by taking the minimum of the Mean Sq
 
 There are two ways to get an unbiased estimate in this case that come to mind. One is once you choose your model using cross-validation, you will do another cross-validation (or a whole epoch, say) only with the model you have - this way you get a distribution of the cross-validation error for the model you picked. Or the other, more basic option is to simply set aside a test set that is never looked at or touched in any way and then see what error you get on that set.
 
+<meta charset="utf-8">
+<style>
 
+path {
+  fill: none;
+  stroke: steelblue;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var projection = d3.geo.albersUsa()
+    .scale(1000)
+    .translate([width / 2, height / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("/mbostock/raw/4090846/us.json", function(error, us) {
+  if (error) throw error;
+
+  svg.append("path")
+      .attr("d", path({
+        type: "MultiPolygon",
+        coordinates: topojson.feature(us, us.objects.counties).features
+            .filter(function(d) { return d.geometry && d.geometry.coordinates.length; })
+            .map(function(d) { var b = d3.geo.bounds(d); return [[b[0], [b[0][0], b[1][1]], b[1], [b[1][0], b[0][1]], b[0]]]; })
+      }));
+});
+
+</script>
 
 
