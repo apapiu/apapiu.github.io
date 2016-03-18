@@ -3,6 +3,61 @@ layout: post
 title: Cross Validation Error Pitfalls
 ---
 
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: A true bar chart with SVG rects</title>
+      <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+  
+	<body>
+		<script type="text/javascript">
+
+			var w = 500;
+			var h = 500;
+			var barPadding = 3;
+			
+			var dataset = [3, 20, 5, 19, 34, 18, 23, 14];
+          
+          
+			//Create SVG element - this is the whole plot
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+          
+          svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("y", function(d, i){return i*35})
+            .attr("x", 0)
+            .attr("width", function(i){return i*10})
+            .attr("height", 30)
+            .attr("fill", "teal")
+            .transition()
+            .duration(2000)
+            .attr("height",15)
+            .transition()
+            .duration(2000)
+            .delay(2000)
+            .attr("x", function(d, i){return i*33})
+            .attr("y", 0)
+            .attr("height", function(i){return i*10})
+            .attr("width", 30)
+            .attr("fill", "black")
+          
+
+            
+		</script>
+	</body>
+</html>
+
+
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
 
 In order to pick the best model we will look at the cross validation errors and then pick the one that gives the smallest error. **One of the mistakes I made early however was to assume that this error is an unbiased estimate of the true test error.** After a bit of thinking this is clearly not true. By choosing the minimum test error every time we do cross-validation on the 10 models we shift the distribution of the real test error to the left. 
