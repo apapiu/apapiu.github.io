@@ -41,20 +41,20 @@ There are two ways to get an unbiased estimate in this case that come to mind. O
 
 
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript">
 
-		var w = 500;
-		var h = 500;
-		var barPadding = 3;
-		
-		var dataset = [3, 20, 5, 19, 34, 18, 23, 14];
-  
-  
-		//Create SVG element - this is the whole plot
-		var svg = d3.select("div#example")
-					.append("svg")
-					.attr("width", w)
-					.attr("height", h);
+<script type="text/javascript">
+	var w = 500;
+	var h = 500;
+	var barPadding = 3;
+	
+	var dataset = [3, 20, 5, 19, 34, 18, 23, 14];
+	
+	
+	//Create SVG element - this is the whole plot
+	var svg = d3.select("div#example")
+				.append("svg")
+				.attr("width", w)
+				.attr("height", h);
   
   svg.selectAll("rect")
     .data(dataset)
@@ -77,6 +77,7 @@ There are two ways to get an unbiased estimate in this case that come to mind. O
     .attr("width", 30)
     .attr("fill", "black")
 </script>
+
 
 
 <div id="example"></div>
