@@ -4,18 +4,9 @@ title: Cross Validation Error Pitfalls
 ---
 
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>D3: A true bar chart with SVG rects</title>
-      <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-		<style type="text/css">
-			/* No style rules here yet */		
-		</style>
-	</head>
-  
-	<body>
-		<script type="text/javascript">
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript">
 
 			var w = 500;
 			var h = 500;
@@ -50,12 +41,7 @@ title: Cross Validation Error Pitfalls
             .attr("height", function(i){return i*10})
             .attr("width", 30)
             .attr("fill", "black")
-          
-
-            
-		</script>
-	</body>
-</html>
+        </script>
 
 
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
