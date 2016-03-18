@@ -5,44 +5,43 @@ title: Cross Validation Error Pitfalls
 
 
 <div id="example">
-
-<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript">
-
-			var w = 500;
-			var h = 500;
-			var barPadding = 3;
-			
-			var dataset = [3, 20, 5, 19, 34, 18, 23, 14];
-          
-          
-			//Create SVG element - this is the whole plot
-			var svg = d3.select("body")
-						.append("svg")
-						.attr("width", w)
-						.attr("height", h);
-          
-          svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("y", function(d, i){return i*35})
-            .attr("x", 0)
-            .attr("width", function(i){return i*10})
-            .attr("height", 30)
-            .attr("fill", "teal")
-            .transition()
-            .duration(2000)
-            .attr("height",15)
-            .transition()
-            .duration(2000)
-            .delay(2000)
-            .attr("x", function(d, i){return i*33})
-            .attr("y", 0)
-            .attr("height", function(i){return i*10})
-            .attr("width", 30)
-            .attr("fill", "black")
-        </script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript">
+	
+				var w = 500;
+				var h = 500;
+				var barPadding = 3;
+				
+				var dataset = [3, 20, 5, 19, 34, 18, 23, 14];
+	          
+	          
+				//Create SVG element - this is the whole plot
+				var svg = d3.select("body")
+							.append("svg")
+							.attr("width", w)
+							.attr("height", h);
+	          
+	          svg.selectAll("rect")
+	            .data(dataset)
+	            .enter()
+	            .append("rect")
+	            .attr("y", function(d, i){return i*35})
+	            .attr("x", 0)
+	            .attr("width", function(i){return i*10})
+	            .attr("height", 30)
+	            .attr("fill", "teal")
+	            .transition()
+	            .duration(2000)
+	            .attr("height",15)
+	            .transition()
+	            .duration(2000)
+	            .delay(2000)
+	            .attr("x", function(d, i){return i*33})
+	            .attr("y", 0)
+	            .attr("height", function(i){return i*10})
+	            .attr("width", 30)
+	            .attr("fill", "black")
+	        </script>
 </div>
 
 Let's say you have 10 models that you'd want to test and roughly all models have the same cross validation error distribution: the Cross Validation Mean Squared Error is normally distributed with mean = 3 and standard deviation equal to .2. Since CV error is an average of a bunch of errors the normality assumption will always hold roughly speaking.   
@@ -81,9 +80,5 @@ This is the left-skewed distribution we get by taking the minimum of the Mean Sq
 There are two ways to get an unbiased estimate in this case that come to mind. One is once you choose your model using cross-validation, you will do another cross-validation (or a whole epoch, say) only with the model you have - this way you get a distribution of the cross-validation error for the model you picked. Or the other, more basic option is to simply set aside a test set that is never looked at or touched in any way and then see what error you get on that set.
 
 
-<svg width="50" height="50">
-    <circle cx="25" cy="25" r="22"
-     fill="blue" stroke="gray" stroke-width="2"/>
-</svg>
 
 
