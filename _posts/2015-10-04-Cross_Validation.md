@@ -40,10 +40,6 @@ This is the left-skewed distribution we get by taking the minimum of the Mean Sq
 There are two ways to get an unbiased estimate in this case that come to mind. One is once you choose your model using cross-validation, you will do another cross-validation (or a whole epoch, say) only with the model you have - this way you get a distribution of the cross-validation error for the model you picked. Or the other, more basic option is to simply set aside a test set that is never looked at or touched in any way and then see what error you get on that set.
 
 
-
-
-<div id="example">
-
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
 
@@ -55,7 +51,7 @@ There are two ways to get an unbiased estimate in this case that come to mind. O
   
   
 		//Create SVG element - this is the whole plot
-		var svg = d3.select("body")
+		var svg = d3.select("div#example")
 					.append("svg")
 					.attr("width", w)
 					.attr("height", h);
@@ -82,6 +78,8 @@ There are two ways to get an unbiased estimate in this case that come to mind. O
     .attr("fill", "black")
 </script>
 
-</div>
+
+<div id="example"></div>
+
 
 
