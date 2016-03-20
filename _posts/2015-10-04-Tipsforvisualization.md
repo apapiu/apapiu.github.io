@@ -11,20 +11,11 @@
 <body>
 <script src="//d3js.org/d3.v3.min.js" \\the d3 script reference></script> 
   
+<p>Click me.</p>
   
-
-  
-<div id="option">
-    <input name="updateButton" 
-           type="button" 
-           value="New Values" 
-           onclick="updateData()" />
-</div>  
-
- 
 <script>
  
-var n = 2000;
+var n = 3000;
 var w = 600;
 var h = 600;
   
@@ -61,18 +52,20 @@ var svg = d3.select("body")
   .transition()
   .duration(500)
   .delay(500)
-  .attr("r", Math.sqrt(50000/(n+3000))) //random function to make circles how I want
+  .attr("r", Math.sqrt(50000/(n+1000))) //random function to make circles how I want
   
 
-updateData = function() {
+d3.select("p")
+    .on("click", function() {
      
+    
 var n = 4000;
 
 var data = [];
 
 for (var i = 0; i < n; i ++) {
   data.push([Math.random(), Math.random()]);
-} // generating new data
+}
     
    svg.selectAll("circle")
   .data(data)
@@ -86,7 +79,7 @@ for (var i = 0; i < n; i ++) {
   .attr("fill", function(d){
     return color((d[0]-1/2)*(d[0]-1/2) +(d[1]-1/2)*(d[1]-1/2) < 1/4)})
     
- };
+  });
  
 </script>
 </body>
