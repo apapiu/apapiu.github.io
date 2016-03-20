@@ -79,6 +79,6 @@ for (var i = 0; i < n; i ++) {
     return color((d[0]-1/2)*(d[0]-1/2) +(d[1]-1/2)*(d[1]-1/2) < 1/4)})
     
   });
- 
+ </script>
 	</body>
 </html>
