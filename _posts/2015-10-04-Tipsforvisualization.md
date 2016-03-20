@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   
 <head>
@@ -9,6 +8,7 @@
  </head>
   
 <body>
+  
 <script src="//d3js.org/d3.v3.min.js" \\the d3 script reference></script> 
   
 <p>Click me.</p>
@@ -52,7 +52,7 @@ var svg = d3.select("body")
   .transition()
   .duration(500)
   .delay(500)
-  .attr("r", Math.sqrt(50000/(n+1000))) //random function to make circles how I want
+  .attr("r", Math.sqrt(50000/(n+1000))) //random function to make 
   
 
 d3.select("p")
@@ -82,5 +82,7 @@ for (var i = 0; i < n; i ++) {
   });
  
 </script>
+
 </body>
+
 </html>
