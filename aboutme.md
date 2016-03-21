@@ -1,7 +1,6 @@
 ---
 layout: page
-title: About me
-subtitle: Alexandru Papiu
+title: Alexandru Papiu
 ---
 
 Hello and welcome to my blog! My name's Alex and I'm doing a PhD in math at Washington University in St. Louis. My research focuses on problems in discrete geometry, combinatorics and graph theory. 
