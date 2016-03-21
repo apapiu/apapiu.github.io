@@ -14,10 +14,13 @@ The data for the analysis below comes from the Social Secutiy Administration. Yo
 
 ![](/img/babynames3.jpg)
 
-
 ![](/img/babynames1965.jpg)
 
 
 ![](/img/babynames1995.jpg)
+
+
+
+**Credits**: The last two plots are basically recreations (with different data) of Nathan Yau's post [here](http://flowingdata.com/2013/09/25/the-most-unisex-names-in-us-history/) - check out his stuff, it's pretty amazing. 
 
 
