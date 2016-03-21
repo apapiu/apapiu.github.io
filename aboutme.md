@@ -6,7 +6,7 @@ subtitle: Alexandru Papiu
 
 Hello and welcome to my blog! My name's Alex and I'm doing a PhD in math at Washington University in St. Louis. My research focuses on problems in discrete geometry, combinatorics and graph theory. 
 
-I have become quite intersted in machine learning and data visualization and have started this blog as a way to document my journey into the nebulous world of "data science". I am especially interested in using interactive visualizations to gain understanding into complex datasets as well as to 
+I have become quite intersted in machine learning and data visualization and have started this blog as a way to document my journey into the nebulous world of "data science". I am especially interested in using interactive visualizations to facilitate better understanding of complex datasets and of complex processes in math and machine learning.
 
 I do most of the analysis you see in:  
 
