@@ -1,8 +1,8 @@
 ###**Alexandru Papiu**
 
-Github: github.com/apapiu 
-LinkedIn: linkedin.com/in/apapiu 
-Technical Blog: apapiu.github.io
+Github: github.com/apapiu     
+LinkedIn: linkedin.com/in/apapiu    
+Technical Blog: apapiu.github.io   
 
 **Outline**: I am a mathematician doing research in computational convex geometry and graph theory. I have a strong interest in machine learning and data visualization and posses strong coding and teaching skills.
 
