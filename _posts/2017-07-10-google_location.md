@@ -74,7 +74,7 @@ df.head(10000).set_index("date_time")["lat"].plot()
 
 
 
-![png](output_6_1.png)
+![png](/img/output_6_1.png)
 
 
 Interesting patterns - one can clearly see the weekly and daily periodicity - in terms of work and home locations.
