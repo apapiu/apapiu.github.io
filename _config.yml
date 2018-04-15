@@ -27,9 +27,9 @@ description: Sick Bro
 # List of links in the navigation bar
 navbar-links:
   Home: ""
-  Visualizations: "visualizations"
+#  Visualizations: "visualizations"
   About Me: "aboutme"
-  CV: "cv"
+#  CV: "cv"
   
 
   
