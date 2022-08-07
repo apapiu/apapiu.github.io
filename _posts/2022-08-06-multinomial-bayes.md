@@ -3,19 +3,17 @@ layout: post
 title: Checking if a Die is fair - Bayesian Edition
 ---
 
-# Checking if a Die is fair - Bayesian Edition
 
 If I gave you a die and and asked you if it's a fair die what would you do? Well most likely you would start rolling a few times and look at the data. Yet even with data it's hard to know for sure! Even a fair die can lead to many different outcomes. And also if we're being honest no die is perfectly fair is it. So we're in a bit of a pickle.
 
-The most common way of dealing with this problem is using hypothesis testing.
-
-- $H_0$: All faces are exactly equally likely
-- $H_1$: Not all faces are exactly equally likely
 
 **To make things a bit simpler and easier to visualize we will look at a 3 sided die**, worry not however most of what we'll do easily generalizes to a 6 sided die. It's really the jump from 2 to 3 dimensions that's the harder part. Also 3 sided die do actually exist. (share pic)
 
 
 #### The Frequentist Approach:
+
+The most common way of dealing with this problem is using hypothesis testing.
+
 We are interested in finding information about $\theta = (\theta_1, \theta_2, \theta_3)$ where $\theta_1$ is the probability of getting a 1 etc. Note that $\theta_1+\theta_2+\theta_3 = 1$ so there are some dependencies within $\theta$. 
 
 The general frequentist approach is described below. Feel free to skip if it bores you. With this notation our hypothesis becomes:
@@ -34,11 +32,15 @@ There are a few issues with this.
 - Thirdly the degrees of freedom computation involved in testing more complicated hypotheses test can add one more layer of confusion especially (see here).
 
 #### A Bayesian Way:
-Hopefully I have convinced that it would be good to at least have an alternative to the aprroach above. In comes Bayes theorem! Generally Bayesian calculations have a bad rap of being very computationally expensive but this really isn't the case here - in fact both the math and the inference is fairly straighforward. Let's look at the formula:
+Hopefully I have convinced that it would be good to at least have an alternative to the aprroach above. In comes Bayes theorem! Generally Bayesian calculations have a bad rap of being very computationally expensive but this really isn't the case here - in fact both the math and the inference is fairly straighforward. 
+
+Let's assume we have obtained some data by rolling the die **50 times - 20 1s, 16 2s, 14 3s.** We want to understand the probability distribution of $\theta$ given $x = (20, 16, 14)$. This is the posterior distribution $p(\theta\mid x)$ and we can use Bayes' formula to obtain it:
 
 $$p(\theta\mid x) \propto p(x\mid \theta) p(\theta) $$
 
-And now assume we have obtained some data by rolling the die **50 times - (20,16,14) which is the counts for 1s, 2s, and 3s respectively.** The vector can be replaces with n, (k1,k2,k3) below - for more generality.
+Note that $p(\theta\mid x)$ is a probability distribution over probabilities - there's nothing special about it mathematically but it might take a bit to wrap one's head around that idea and that's ok. Once we plot a concrete example hopefully this becomes more clear.
+
+Let's look at the components:
 
 - $p(\theta)$ will be our prior and will incorporate any prior knowledge we have about the fairness or loadedness of the die. We will for the most part use a uniform prior $p(\theta) \propto 1$ which says that any combination of $\theta_1, \theta_2, \theta_3$ is equally likely as long as they sum up to 1.
 
@@ -46,11 +48,11 @@ And now assume we have obtained some data by rolling the die **50 times - (20,16
 
 $$p(x\mid \theta)=\prod p(x_i\mid \theta) = \theta_1^{20}\theta_2^{16}\theta_3^{14}$$ 
 
-This might seem like an odd function but if we take the log
+This might seem like an odd function but if we take the log we get:
 
 $$-log(p(x\mid \theta)) = 20(log(\theta_1))+16(log(\theta_2))+14(log(\theta_3))$$ 
 
-- if we squint a bit we realize that this is just the CategoricalCrossentropy that's used a lot as.
+If we squint a bit we realize that this is just the CategoricalCrossentropy given the data that's used a lot as a loss function in ML multi-class models.
 
 
 So assuming a uniform prior $$p(\theta\mid x) \propto \theta_1^{20}\cdot \theta_2^{16} \cdot \theta_3^{14}$$ a rather simple formula. Now to actually get the inference on $\theta$ we could use say pymc to do this whole process for us or we could try to sample directly from the unnormalized posterior here. Instead we will choose a middle ground and use the fact that the posterior is a known distrbution.
@@ -81,6 +83,33 @@ class Dir():
 
 There's a decent amount of code here but notice that this is `posterior_alpha = self.prior_alpha + y` is the meat of the computation - and it's a simple addition!
 
+Let's use it on the example:
+
+```python
+x = Diri(prior_alpha=[1,1,1])
+x.fit([20,16,14])
+
+posterior = x.sample_posterior(10000)
+df_trace = pd.DataFrame(posterior, columns = ["theta1", "theta2", "theta3"])
+```
+
+Now `df_trace` is a sample from the posterior distribution. Let's first plot the marginal distributions:
+
+<img width="700" alt="image" src="https://user-images.githubusercontent.com/13619417/183269031-6adc7894-9e28-49ae-addb-869eac16448b.png">
+
+To visialize the joint posterior distribution we will use a trick to use a 2D representation of our three parameters.
+
+<img width="250" alt="image" src="https://user-images.githubusercontent.com/13619417/183269166-02f0a392-1216-4840-9af2-81e5a1a686bd.png">
+
+
+In this triangle we can plot the posterior sample we get:
+
+<img width="547" alt="image" src="https://user-images.githubusercontent.com/13619417/183269244-2f8aeea7-3112-4130-84fc-816427673a7f.png">
+
+
+
+
+
 Ok so now that we have a posterior distribution we still have to use it to decide if the die is fair or not. If we look at $Pr(\theta=(1/3,1/3,1/3)\mid x)$ this will in fact be zero since a point has zero measure. So this approach does provide the commonsensical inference that no die is perfectly fair. Instead we can define a fair die as one that is withing P=(1/3,1/3,1/3) with some margin of error! For example if a die has (0.323,0.342, 0.333) we might consider this die to be good enough for all intents and purposes. 
 
 
@@ -89,10 +118,30 @@ $$ \theta_0 = (1/3-x_1,1/3-x_2,1/3-x_3) - $$ Then we want $$\sum(\mid 1/3-x_i\mi
 
 We will pick K to be 0.1 for our purposes. So we consider a die to be fair if the total absolute deviations from a fair die are less than 10%. So (0.323,0.342, 0.333) is "fair" (0.3, 0.3, 0.4) is not fair - the  sum of absolute deviations is 0.2.
 
+For our original example this is what the count looks like:
 
-<img width="542" alt="image" src="https://user-images.githubusercontent.com/13619417/183262187-3bc6de93-6d5b-47ad-9280-6da9e64b6720.png">
+<img width="543" alt="image" src="https://user-images.githubusercontent.com/13619417/183269567-a7aeda6d-b362-49ae-ae03-f4cf7060b1f0.png">
 
 
-<img width="542" alt="image" src="https://user-images.githubusercontent.com/13619417/183262226-de587b2d-6835-41ef-b17e-68d552274fd9.png">
+Let's try some more examples:
 
+```python
+x = Diri(prior_alpha=[1,1,1])
+x.fit([14,3,9])
+
+posterior = x.sample_posterior(5000)
+df_trace = pd.DataFrame(posterior, columns = ["theta1", "theta2", "theta3"])
+```
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/13619417/183269478-cebf7ff1-3812-4364-ab9a-60f818ee8203.png">
+
+
+```python
+x = Diri(prior_alpha=[1,1,1])
+x.fit([129,132,121])
+
+posterior = x.sample_posterior(5000)
+df_trace = pd.DataFrame(posterior, columns = ["theta1", "theta2", "theta3"])
+```
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/13619417/183269514-fede31ec-d7e2-4a22-8c90-da56b124112d.png">
 
