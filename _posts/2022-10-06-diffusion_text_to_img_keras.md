@@ -1,14 +1,13 @@
 ---
 layout: post
-title: Train Text to Image Diffusion Model in Keras
+title: Training Text to Image Diffusion Models in Keras
 ---
 
 # Text to Image Model in Keras
 
-This is a blog post accompanying the github repo here: github.com/apapiu/guided-diffusion-keras. Over time I will most likely add more posts related to the 
-repoe around inpainting, latent diffusion etc so make sure to come back :)
+This is a blog post accompanying the github repo here: github.com/apapiu/guided-diffusion-keras. Over time I will most likely add more posts related to the repo around in/outpainting, latent diffusion, stable diffusion etc. so make sure to come back :)
 
-Codebase to train a CLIP conditioned Text to Image Diffusion model on Colab in Keras. See below for notebooks and examples with prompts.
+Below I will talk about learnings while training a CLIP conditioned Text to Image Diffusion model on Colab in Keras. See below for notebooks and examples with prompts.
 
 Images generated for the prompt: `A small village in the Alps, spring, sunset` 
 
