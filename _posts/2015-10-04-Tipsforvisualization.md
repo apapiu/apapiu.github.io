@@ -10,7 +10,7 @@
   
 	<body>
 	
-	<p>Click me.</p>
+	<p>Click me. Random D3 example.</p>
 
 	<script>
  
