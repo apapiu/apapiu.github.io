@@ -3,7 +3,7 @@ layout: page
 title: Alexandru Papiu
 ---
 
-Hello and welcome to my blog! My name's Alex and I'm a Data Scientist at [Vendelux](https://https://vendelux.com//) where I work on 
+Hello and welcome to my blog! My name's Alex and I'm a Data Scientist at [Vendelux](https://https://vendelux.com//) where I work somewhere at the intersection of ML and backend and AI engineering.
 
 Before this I was an [Insight Fellow](https://www.insightdatascience.com/), worked at Simulmedia, and Bloomfire, and did a PhD in math at Washington University in St. Louis. During my PhD I focused on problems in discrete geometry, combinatorics, and graph theory. 
 
